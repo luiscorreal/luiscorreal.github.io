@@ -1,6 +1,6 @@
 MrHide.builders=Object.assign(MrHide.builders,{
     pagesNavbar(){
-        var ret='<nav>'
+        var ret='<nav>';
         ['perro','gato'].forEach((item, i) => {
             ret+=`<a href='#'>${item}</a>`;
         });
