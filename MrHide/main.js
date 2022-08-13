@@ -106,6 +106,7 @@ if(typeof window['MrHide'] !== 'function'){
                         return 'error:no builder function:'$1;
                     }
                 });
+                return newContents;
             })
         }
 
