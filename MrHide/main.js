@@ -103,7 +103,7 @@ if(typeof window['MrHide'] !== 'function'){
                     if (this.builders.hasOwnProperty($1)) {
                         return this.builders[$1].apply(this);
                     }else{
-                        return 'error:no builder function:'$1;
+                        return 'error:no builder function:'+$1;
                     }
                 });
                 return newContents;
