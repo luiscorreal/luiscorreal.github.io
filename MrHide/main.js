@@ -21,7 +21,7 @@ if(typeof window['MrHide'] !== 'function'){
                 //set default settings
                 this.settings=Object.assign({
                     showErrors:false
-                },data};
+                },data);
 
                 if(slashsplit.length===2){//is page
                     this.file=this.type;
