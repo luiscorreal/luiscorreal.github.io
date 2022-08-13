@@ -49,7 +49,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static property(name){
             switch(name){
-                case 'contents':return this.contents:break;
+                case 'contents':return this.contents;break;
                 default: '';
             }
         }
