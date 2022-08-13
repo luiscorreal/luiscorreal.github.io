@@ -9,9 +9,9 @@ if(typeof window['MrHide'] !== 'function'){
         static layouts={
             add(name,url){
                 if(name===''){
-                    return {};
+                    return Promise.resolve({});
                 }else if(this.hasOwnProperty('name')){
-                    return this[name];
+                    return Promise.resolve(this[name]);
                 }else{
                     return fetch(url).then(json=>json.json()).then(json=>{
                         this[name]=json;
