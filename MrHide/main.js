@@ -109,6 +109,10 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static builders={//into these functions 'this' refers to MrHide object
+            build(name,attrs=[]){
+                this[name].apply(MrHide,atts);
+            },
+
             layout(l){
                 this.layout=l;
                 return '';

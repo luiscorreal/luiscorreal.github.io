@@ -1,17 +1,17 @@
 MrHide.builders=Object.assign(MrHide.builders,{
     pagesNavbar(){
-        var ret='<nav>',item;
+        var ret='<nav class="main">',item;
         for (item in this.layouts['page']) {
             item=this.layouts['page'][item];
             console.log(item)
-            ret+=`<a href='${item.url}'>${item.title}</a>`;
+            ret+=`<a href='${this.root+'/'+item.url+'.html'}'>${item.title}</a>`;
         }
         return ret+'</nav>';
     },
 
-    head(){
+    header(){
         return `<head>
-            <h1>Here the title</h1>
+            ${this.builders.build('pagesNavbar')}
         </head>`;
     }
 })
