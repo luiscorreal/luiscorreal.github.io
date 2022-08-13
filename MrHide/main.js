@@ -92,7 +92,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file
-            this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file}.html`).then(html=>{
+            this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`).then(html=>{
                 this.contents=html;
 
                 if(this.layout!==''){
