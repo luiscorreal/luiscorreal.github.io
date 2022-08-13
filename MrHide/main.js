@@ -5,7 +5,6 @@ if(typeof window['MrHide'] !== 'function'){
         static type;
         static file;
         static contents='';
-        static layoutContents='';
         static settings;
 
         static build(){
@@ -41,27 +40,22 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file
-            /*fetch(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(data=>data.text()).then(html=>{
-                this.contents=html;
-                //layout
-                this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
-                    this.layoutContents=contents;
-                    this.html(contents);
-                })
-            })*/
-
             this.processContents(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(html=>{
                 this.contents=html;
                 //layout
                 this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
-                    this.layoutContents=contents;
                     document.body.innerHTML=contents;
                 })
             })
         }
 
         static builders={
-            contents(){return this.contents;}
+            contents(){return this.contents;},
+            user(field){
+                switch(field){
+                    case 'name':return 'hey';break;
+                }
+            }
         }
 
         static processContents(url){
