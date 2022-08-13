@@ -5,8 +5,46 @@ if(typeof window['MrHide'] !== 'function'){
         static type;
         static file;
         static contents='';
-        static html='';
+        static layoutContents='';
         static settings;
+
+        static includesUrl;
+        static files={};
+
+        static getIncludes(text){
+            var regex=/{{include::(.+)}}/g,result,ret=[];
+
+            while(result = regex.exec(text)) {
+              if(this.files.hasOwnProperty(name)===false && !ret.includes(result[1])){
+                  ret.push(result[1]);
+              }
+            }
+
+            return ret;
+        }
+
+        static openFile(name,url){
+            if(this.files.hasOwnProperty(name)===false){
+                Object.defineProperty(this.files, name, {value: ''});
+
+                return fetch(url).then(data=>data.text()).then(contents=>{
+                    Object.defineProperty(this.files, name, {value: contents});
+                    var incs=getIncludes(contents);
+
+                    if(incs.length>0){
+                        Promise.all(urls.map(url =>
+                            fetch(url).then(resp => resp.text())
+                        )).then(texts => {
+                            …
+                        })
+                    }else{
+                        return true;
+                    }
+                });
+            }else{
+                return false;
+            }
+        }
 
         static build(){
             var slashsplit=window.location.pathname.split('/');
@@ -38,42 +76,38 @@ if(typeof window['MrHide'] !== 'function'){
                 this.contents=html;
 
                 if(this.settings.theme===''){
-                    this.html=this.contents;
-                    this.setContents();
+                    this.html(this.contents);
                 }else{
                     this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
 
                     //layout
                     this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
-                        this.html=contents;
-                        this.setContents();
+                        this.layoutContents=contents;
+                        this.populateIncludes();
+
+                        ...
+                        this.html(contents);
                     })
                 }
 
             })
         }
 
-        static property(name){
-            switch(name){
-                case 'contents':return this.contents;break;
-                default: '';
-            }
+        static builders={
+            contents(){return MrHide.contents;}
         }
 
         static processContents(url){
             return fetch(url).then(data=>data.text()).then(contents=>{
-                var regex=/{{this::(.+)}}/g;
-
+                var regex=/<<(.+)(\(.+\))?>>/g;
                 const newContents = contents.replace(regex, (match, $1) => {
-                  return this.property($1);
+                  return this.builders[$1]();
                 });
-
-                return newContents;
             })
         }
 
-        static setContents(){
-            document.body.innerHTML=this.html;
+        static html(contents){
+            document.body.innerHTML=contents;
         }
 
     }
