@@ -9,6 +9,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static build(){
             var slashsplit=window.location.pathname.split('/');
+            console.log(slashsplit)
 
             this.username=window.location.hostname.split('.')[0];
             this.root='https://'+window.location.hostname;
@@ -18,7 +19,9 @@ if(typeof window['MrHide'] !== 'function'){
             //settings
             fetch(this.root+'/MrHide/settings.json').then(data=>data.json()).then(data=>{
                 //set default settings
-                this.settings=data;
+                this.settings=Object.assign({
+                    showErrors:false
+                },data};
 
                 if(slashsplit.length===2){//is page
                     this.file=this.type;
@@ -63,7 +66,7 @@ if(typeof window['MrHide'] !== 'function'){
             contents(){
                 return this.contents;
             },
-            
+
             user(field){
                 switch(field){
                     case 'name':return 'hey';break;
@@ -77,11 +80,16 @@ if(typeof window['MrHide'] !== 'function'){
 
                 const newContents = contents.replace(regex, (match, $1) => {
                     parts=$1.split(':');parts[1]=(parts[1]===undefined)?[]:parts[1].toString().split(',');
-                    console.log(parts)
+
                     if (this.builders.hasOwnProperty(parts[0])) {
                         return this.builders[parts[0]].apply(this,parts[1]);
                     }else{
-                        return 'error:no builder function:'+parts[0];
+                        if(this.settings.showErrors){
+                            return 'error: No builder function: '+parts[0];
+                        }else{
+                            return '';
+                        }
+
                     }
                 });
 
