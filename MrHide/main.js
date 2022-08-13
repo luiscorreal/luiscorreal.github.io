@@ -92,7 +92,6 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file
-            console.log(this.file)
             this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`).then(html=>{
                 this.contents=html;
 
@@ -110,7 +109,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static builders={//into these functions 'this' refers to MrHide object
             build(name,attrs=[]){
-                this[name].apply(MrHide,attrs);
+                return this[name].apply(MrHide,attrs);
             },
 
             layout(l){
