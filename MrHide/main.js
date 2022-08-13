@@ -98,14 +98,13 @@ if(typeof window['MrHide'] !== 'function'){
 
         static processContents(url){
             return fetch(url).then(data=>data.text()).then(contents=>{
-                console.log(contents)
                 var regex=/<<(.+)(\(.+\))?>>/g;
                 const newContents = contents.replace(regex, (match, $1) => {
                     if (this.builders.hasOwnProperty($1)) {
-                        console.log(this.builders[$1].apply(this));
-                      }
-
-                    return this.builders[$1]();
+                        return this.builders[$1].apply(this);
+                    }else{
+                        return 'error:no builder function:'$1;
+                    }
                 });
             })
         }
