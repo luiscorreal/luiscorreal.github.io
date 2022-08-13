@@ -115,7 +115,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
-                return `<img src=${this.root}/MrHide/assets/${this.file.image}' >`;
+                return `<img src='${this.root}/MrHide/assets/${this.file.image}' >`;
             },
 
             contents(){
