@@ -62,7 +62,8 @@ if(typeof window['MrHide'] !== 'function'){
                 const newContents = contents.replace(regex, (match, $1) => {
                   return this.property($1);
                 });
-
+                this.contents=newContents;
+                console.log(this.contents)
                 return newContents;
             })
         }
