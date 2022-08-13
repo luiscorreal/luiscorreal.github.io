@@ -9,7 +9,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static build(){
             var slashsplit=window.location.pathname.split('/');
-            console.log(slashsplit)
+            console.log(window.location.pathname)
 
             this.username=window.location.hostname.split('.')[0];
             this.root='https://'+window.location.hostname;
