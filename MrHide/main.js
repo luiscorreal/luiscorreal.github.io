@@ -33,7 +33,12 @@ if(typeof window['MrHide'] !== 'function'){
                     onload(){
                         MrHide.process();
                     },
-                    src:this.settings.themeUrl+'/js.js'
+                    src:this.settings.themeUrl+'js.js'
+                }));
+                // theme style css
+                document.head.appendChild(Object.assign(document.createElement('link'),{
+                    rel:"stylesheet",
+                    href:this.settings.themeUrl+'css.css'
                 }));
             })
         }
@@ -49,7 +54,8 @@ if(typeof window['MrHide'] !== 'function'){
             })
         }
 
-        static builders={
+        static builders={//into these functions 'this' refers to MrHide object
+            layout(l){this.settings.theme=l;return '';}
             contents(){return this.contents;},
             user(field){
                 switch(field){
@@ -60,14 +66,18 @@ if(typeof window['MrHide'] !== 'function'){
 
         static processContents(url){
             return fetch(url).then(data=>data.text()).then(contents=>{
-                var regex=/<<(.+)(\(.+\))?>>/g;
+                var regex=/<<(.+)>>/g,parts;
+
                 const newContents = contents.replace(regex, (match, $1) => {
-                    if (this.builders.hasOwnProperty($1)) {
-                        return this.builders[$1].apply(this);
+                    parts=$1.split(':');parts[1]=(parts[1]===undefined)?[]:parts[1].toString().split(',');
+                    console.log(parts)
+                    if (this.builders.hasOwnProperty(parts[0])) {
+                        return this.builders[parts[0]].apply(this,parts[1]);
                     }else{
-                        return 'error:no builder function:'+$1;
+                        return 'error:no builder function:'+parts[0];
                     }
                 });
+
                 return newContents;
             })
         }
