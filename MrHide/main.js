@@ -85,9 +85,6 @@ if(typeof window['MrHide'] !== 'function'){
                 //layout
                 this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
                     this.layoutContents=contents;
-                    this.populateIncludes();
-
-                    ...
                     this.html(contents);
                 })
 
