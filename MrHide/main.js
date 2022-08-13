@@ -101,8 +101,11 @@ if(typeof window['MrHide'] !== 'function'){
                 console.log(contents)
                 var regex=/<<(.+)(\(.+\))?>>/g;
                 const newContents = contents.replace(regex, (match, $1) => {
-                    console.log(this.builders[$1]);
-                  return this.builders[$1]();
+                    if (this.buildres.hasOwnProperty($1)) {
+                        console.log($1);
+                      }
+
+                    return this.builders[$1]();
                 });
             })
         }
