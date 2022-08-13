@@ -4,7 +4,7 @@ if(typeof window['MrHide'] !== 'function'){
         static root;//url well formed
         static type;
         static file;
-        static content='';
+        static contents='';
         static settings;
 
         static build(){
@@ -32,15 +32,16 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
+            //file
             fetch(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(data=>data.text()).then(html=>{
-                this.content=html;
+                this.contents=html;
 
                 if(this.settings.theme===''){
-                    this.html(this.content);
+                    this.setContents();
                 }else{
-                    var themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
-                    fetch(themeUrl+'layouts/'+this.type+'.html').then(data=>data.text()).then(data=>{
-                        this.html(data)
+                    this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
+                    this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
+                        this.setContents();
                     })
                 }
 
@@ -54,15 +55,20 @@ if(typeof window['MrHide'] !== 'function'){
             }
         }
 
-        static html(contents){
-            var regex=/{{this::(.+)}}/g;
+        static processContents(url){
+            return fetch(url).then(data=>data.text()).then(contents=>{
+                var regex=/{{this::(.+)}}/g;
 
-            const newContents = contents.replace(regex, (match, $1) => {
-              return this.property($1);
-            });
+                const newContents = contents.replace(regex, (match, $1) => {
+                  return this.property($1);
+                });
 
-            document.body.innerHTML+=newContents;
+                return newContents;
+            })
+        }
 
+        static setContents(){
+            document.body.html=this.contents;
         }
 
     }
