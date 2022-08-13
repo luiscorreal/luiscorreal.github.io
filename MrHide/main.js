@@ -11,7 +11,7 @@ if(typeof window['MrHide'] !== 'function'){
         static includesUrl;
         static files={};
 
-        static getIncludes(text){
+        /*static getIncludes(text){
             var regex=/{{include::(.+)}}/g,result,ret=[];
 
             while(result = regex.exec(text)) {
@@ -44,7 +44,7 @@ if(typeof window['MrHide'] !== 'function'){
             }else{
                 return false;
             }
-        }
+        }*/
 
         static build(){
             var slashsplit=window.location.pathname.split('/');
@@ -57,16 +57,23 @@ if(typeof window['MrHide'] !== 'function'){
             //settings
             fetch(this.root+'/MrHide/settings.json').then(data=>data.json()).then(data=>{
                 //set default settings
-                this.settings=Object.assign({
-                    "theme":""
-                },data);
+                this.settings=data;
 
                 if(slashsplit.length===2){//is page
                     this.file=this.type;
                     this.type='page';
                 }
 
-                this.process();
+                this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
+
+                //theme logic js
+                document.head.appendChild(Object.assign(document.createElement('script'),{
+                    type:"text/javascript",
+                    onload(){
+                        MrHide.process();
+                    },
+                    src:this.settings.themeUrl+'/js.js'
+                }));
             })
         }
 
@@ -75,20 +82,15 @@ if(typeof window['MrHide'] !== 'function'){
             fetch(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(data=>data.text()).then(html=>{
                 this.contents=html;
 
-                if(this.settings.theme===''){
-                    this.html(this.contents);
-                }else{
-                    this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
+                //layout
+                this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
+                    this.layoutContents=contents;
+                    this.populateIncludes();
 
-                    //layout
-                    this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
-                        this.layoutContents=contents;
-                        this.populateIncludes();
+                    ...
+                    this.html(contents);
+                })
 
-                        ...
-                        this.html(contents);
-                    })
-                }
 
             })
         }
@@ -101,6 +103,7 @@ if(typeof window['MrHide'] !== 'function'){
             return fetch(url).then(data=>data.text()).then(contents=>{
                 var regex=/<<(.+)(\(.+\))?>>/g;
                 const newContents = contents.replace(regex, (match, $1) => {
+                    console.log(this.builders[$1]);
                   return this.builders[$1]();
                 });
             })
