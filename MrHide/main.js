@@ -46,13 +46,13 @@ if(typeof window['MrHide'] !== 'function'){
 
                     if(this.file===''){//is index page
                         this.file='index';
-                        this.layout=''
+                        this.layout='page'
                     }
 
                     //open specfic layout sources check if file exists
                     this.layouts.add(this.layout,this.root+'/MrHide/'+this.layout+'s/list.json').then(pages=>{
-                        if (this.file==='index' && this.layout===''){//index
-                            this.file={url:'index',title:'xxx'};
+                        if (this.file==='index' && this.layout==='page'){//index
+                            this.file={url:'index',title:'Please help me!'};
                         }else{
                             if (!this.pages.hasOwnProperty(this.file)){//check if ressource does not exists
                                 this.file={url:'404',title:'404'};
@@ -92,6 +92,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file
+            console.log(this.file)
             this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`).then(html=>{
                 this.contents=html;
 
