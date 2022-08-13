@@ -25,14 +25,9 @@ if(typeof window['MrHide'] !== 'function'){
                 if(slashsplit.length===2){//is page
                     this.file=this.type;
                     this.type='page';
-
-
-
-                }else{//is meta type(post,...)
-                    switch(this.type){
-                        case 'post':this.post();break;
-                    }
                 }
+
+                this.process();
             })
         }
 
