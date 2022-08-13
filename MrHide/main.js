@@ -101,7 +101,7 @@ if(typeof window['MrHide'] !== 'function'){
                 console.log(contents)
                 var regex=/<<(.+)(\(.+\))?>>/g;
                 const newContents = contents.replace(regex, (match, $1) => {
-                    if (this.buildres.hasOwnProperty($1)) {
+                    if (this.builders.hasOwnProperty($1)) {
                         console.log($1);
                       }
 
