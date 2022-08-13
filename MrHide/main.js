@@ -55,8 +55,15 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static builders={//into these functions 'this' refers to MrHide object
-            layout(l){this.settings.theme=l;return '';}
-            contents(){return this.contents;},
+            layout(l){
+                this.settings.theme=l;
+                return '';
+            },
+
+            contents(){
+                return this.contents;
+            },
+            
             user(field){
                 switch(field){
                     case 'name':return 'hey';break;
