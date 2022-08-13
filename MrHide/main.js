@@ -68,7 +68,7 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static setContents(){
-            document.body.html=this.contents;
+            document.body.innerHTML=this.contents;
         }
 
     }
