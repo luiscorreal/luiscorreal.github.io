@@ -122,6 +122,10 @@ if(typeof window['MrHide'] !== 'function'){
                 return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
             },
 
+            title(){
+                return `<h1>${this.file.title}</h1>`;
+            },
+
             contents(){
                 return this.contents;
             },

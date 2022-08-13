@@ -10,8 +10,6 @@ MrHide.builders=Object.assign(MrHide.builders,{
     },
 
     header(){
-        return `<head>
-            ${this.builders.build('pagesNavbar')}
-        </head>`;
+        return `<header>${this.builders.build('pagesNavbar')}</header>`;
     }
 })
