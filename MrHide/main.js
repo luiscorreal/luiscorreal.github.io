@@ -8,44 +8,6 @@ if(typeof window['MrHide'] !== 'function'){
         static layoutContents='';
         static settings;
 
-        static includesUrl;
-        static files={};
-
-        /*static getIncludes(text){
-            var regex=/{{include::(.+)}}/g,result,ret=[];
-
-            while(result = regex.exec(text)) {
-              if(this.files.hasOwnProperty(name)===false && !ret.includes(result[1])){
-                  ret.push(result[1]);
-              }
-            }
-
-            return ret;
-        }
-
-        static openFile(name,url){
-            if(this.files.hasOwnProperty(name)===false){
-                Object.defineProperty(this.files, name, {value: ''});
-
-                return fetch(url).then(data=>data.text()).then(contents=>{
-                    Object.defineProperty(this.files, name, {value: contents});
-                    var incs=getIncludes(contents);
-
-                    if(incs.length>0){
-                        Promise.all(urls.map(url =>
-                            fetch(url).then(resp => resp.text())
-                        )).then(texts => {
-                            …
-                        })
-                    }else{
-                        return true;
-                    }
-                });
-            }else{
-                return false;
-            }
-        }*/
-
         static build(){
             var slashsplit=window.location.pathname.split('/');
 
@@ -79,16 +41,22 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file
-            fetch(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(data=>data.text()).then(html=>{
+            /*fetch(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(data=>data.text()).then(html=>{
                 this.contents=html;
-
                 //layout
                 this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
                     this.layoutContents=contents;
                     this.html(contents);
                 })
+            })*/
 
-
+            this.processContents(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(html=>{
+                this.contents=html;
+                //layout
+                this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
+                    this.layoutContents=contents;
+                    document.body.innerHTML=contents;
+                })
             })
         }
 
@@ -109,12 +77,8 @@ if(typeof window['MrHide'] !== 'function'){
                 return newContents;
             })
         }
-
-        static html(contents){
-            document.body.innerHTML=contents;
-        }
-
     }
+
 
     window.addEventListener('load',function(evt){
         MrHide.build();
