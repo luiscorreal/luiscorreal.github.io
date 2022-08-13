@@ -11,6 +11,7 @@ if(typeof window['MrHide'] !== 'function'){
     }
 
     window.addEventListener('load',function(evt){
+        console.log('Hello from this callback!')
         MrHide.build();
     });
 
