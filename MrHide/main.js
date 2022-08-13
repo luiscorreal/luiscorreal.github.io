@@ -1,5 +1,10 @@
 if(typeof window['MrHide'] !== 'function'){
     window.MrHide = class  {
-      console.log(window.location.hostname.split('.')[0])
+        static username=window.location.hostname.split('.')[0];
+
+        toString(){
+            console.log('username:':this.username);
+        }
+
     }
 }
