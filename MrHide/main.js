@@ -47,12 +47,18 @@ if(typeof window['MrHide'] !== 'function'){
             })
         }
 
+        static property(name){
+            switch(name){
+                case 'contents':return this.contents:break;
+                default: '';
+            }
+        }
+
         static html(contents){
             var regex=/{{this::(.+)}}/g;
 
             const newContents = contents.replace(regex, (match, $1) => {
-                console.log(this['contents'])
-              return this[$1]
+              return this.property($1);
             });
 
             document.body.innerHTML+=newContents;
