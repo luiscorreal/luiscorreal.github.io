@@ -5,6 +5,7 @@ if(typeof window['MrHide'] !== 'function'){
         static type;
         static file;
         static contents='';
+        static html='';
         static settings;
 
         static build(){
@@ -37,10 +38,14 @@ if(typeof window['MrHide'] !== 'function'){
                 this.contents=html;
 
                 if(this.settings.theme===''){
+                    this.html=this.contents;
                     this.setContents();
                 }else{
                     this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
+
+                    //layout
                     this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
+                        this.html=contents;
                         this.setContents();
                     })
                 }
@@ -62,14 +67,13 @@ if(typeof window['MrHide'] !== 'function'){
                 const newContents = contents.replace(regex, (match, $1) => {
                   return this.property($1);
                 });
-                this.contents=newContents;
-                console.log(this.contents)
+
                 return newContents;
             })
         }
 
         static setContents(){
-            document.body.innerHTML=this.contents;
+            document.body.innerHTML=this.html;
         }
 
     }
