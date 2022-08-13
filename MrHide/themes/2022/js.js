@@ -5,6 +5,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
             ret+=`<a href='${item.url}'>${item.title}</a>`;
         });*/
         for (const item in this.layouts['page']) {
+            item=this.layouts['page'][item];
             console.log(item)
             ret+=`<a href='${item.url}'>${item.title}</a>`;
         }
