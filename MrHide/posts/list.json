@@ -1,11 +1,10 @@
 [
     {
         "title":"About",
-        "url":"about.html",
+        "url":"about",
         "categories":[],
         "tags":[],
         "date":"2022-04-12",
-        "published":false,
         "author":"",
         "image":"",
         "summary":"What we what to do here!"

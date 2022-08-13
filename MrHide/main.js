@@ -2,66 +2,120 @@ if(typeof window['MrHide'] !== 'function'){
     window.MrHide = class  {
         static username;
         static root;//url well formed
-        static type;
+        static type;//the layout file
         static file;
         static contents='';
         static settings;
+        static layouts={
+            add(name,url){
+                if(name===''){
+                    return {};
+                }else if(this.hasOwnProperty('name')){
+                    return this[name];
+                }else{
+                    return fetch(url).then(json=>json.json()).then(json=>{
+                        this[name]=json;
+                        return json;
+                    });
+                }
+            }
+        };
 
         static build(){
             var slashsplit=window.location.pathname.split('/');
-            console.log(window.location.pathname)
 
             this.username=window.location.hostname.split('.')[0];
             this.root='https://'+window.location.hostname;
-            this.type=slashsplit[1];
+            this.layout=slashsplit[1];
             this.file=slashsplit[2];
 
-            //settings
-            fetch(this.root+'/MrHide/settings.json').then(data=>data.json()).then(data=>{
-                //set default settings
-                this.settings=Object.assign({
-                    showErrors:false
-                },data);
+            //pages
+            this.layouts.add('page',this.root+'/MrHide/pages/list.json').then(pages=>{
 
-                if(slashsplit.length===2){//is page
-                    this.file=this.type;
-                    this.type='page';
-                }
+                //settings
+                fetch(this.root+'/MrHide/settings.json').then(data=>data.json()).then(data=>{
+                    //set default settings
+                    this.settings=Object.assign({
+                        showErrors:false
+                    },data);
 
-                this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
+                    if(slashsplit.length===2){//is page
+                        this.file=this.layout;
+                        this.layout='page';
+                    }
 
-                //theme logic js
-                document.head.appendChild(Object.assign(document.createElement('script'),{
-                    type:"text/javascript",
-                    onload(){
-                        MrHide.process();
-                    },
-                    src:this.settings.themeUrl+'js.js'
-                }));
-                // theme style css
-                document.head.appendChild(Object.assign(document.createElement('link'),{
-                    rel:"stylesheet",
-                    href:this.settings.themeUrl+'css.css'
-                }));
+                    if(this.file===''){//is index page
+                        this.file='index';
+                        this.layout=''
+                    }
+
+                    //open specfic layout sources check if file exists
+                    this.layouts.add(this.layout,this.root+'/MrHide/'+this.layout+'s/list.json').then(pages=>{
+                        if (this.file==='index' && this.layout===''){//index
+                            this.file={url:'index',title:'xxx'};
+                        }else{
+                            if (!this.pages.hasOwnProperty(this.file)){//check if ressource does not exists
+                                this.file={url:'404',title:'404'};
+                                this.type='page';
+                            }else{
+                                this.file={
+                                    url:this.file,
+                                    ... this.pages[this.file]
+                                };
+                            }
+                        }
+
+                        this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
+
+                        //theme logic js
+                        document.head.appendChild(Object.assign(document.createElement('script'),{
+                            type:"text/javascript",
+                            onload(){
+                                MrHide.process();
+                            },
+                            src:this.settings.themeUrl+'js.js'
+                        }));
+                        // theme style css
+                        document.head.appendChild(Object.assign(document.createElement('link'),{
+                            rel:"stylesheet",
+                            href:this.settings.themeUrl+'css.css'
+                        }));
+
+                    });
+
+
+                })
             })
         }
 
+
+
         static process(){
             //file
-            this.processContents(`${this.root}/MrHide/${this.type}s/${this.file}.html`).then(html=>{
+            this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file}.html`).then(html=>{
                 this.contents=html;
-                //layout
-                this.processContents(this.settings.themeUrl+'layouts/'+this.type+'.html').then(contents=>{
-                    document.body.innerHTML=contents;
-                })
+
+                if(this.layout!==''){
+                    //layout
+                    this.processContents(this.settings.themeUrl+'layouts/'+this.layout+'.html').then(contents=>{
+                        document.body.innerHTML=contents;
+                    })
+                }else{
+                    document.body.innerHTML=html
+                }
+
             })
         }
 
         static builders={//into these functions 'this' refers to MrHide object
             layout(l){
-                this.settings.theme=l;
+                this.layout=l;
                 return '';
             },
+
+            featuredImage(){
+                return `<img src=${t'his.root}/MrHide/assets/${this.file.image}' >`;
+            }
 
             contents(){
                 return this.contents;
