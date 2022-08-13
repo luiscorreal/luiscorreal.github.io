@@ -51,7 +51,7 @@ if(typeof window['MrHide'] !== 'function'){
             var regex=/{{this::(.+)}}/g;
 
             const newContents = contents.replace(regex, (match, $1) => {
-                console.log(this)
+                console.log(this['contents'])
               return this[$1]
             });
 
