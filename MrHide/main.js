@@ -93,7 +93,7 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static builders={
-            contents(){return MrHide.contents;}
+            contents(){return this.contents;}
         }
 
         static processContents(url){
@@ -102,7 +102,7 @@ if(typeof window['MrHide'] !== 'function'){
                 var regex=/<<(.+)(\(.+\))?>>/g;
                 const newContents = contents.replace(regex, (match, $1) => {
                     if (this.builders.hasOwnProperty($1)) {
-                        console.log(this.builders[$1]);
+                        console.log(this.builders[$1].apply(this));
                       }
 
                     return this.builders[$1]();
