@@ -3,7 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <script type="text/javascript" src="MrHide/main.js"></script>
+        <script type="text/javascript">
+            document.head.appendChild(Object.assign(document.createElement('script'),{
+                type:"text/javascript",
+                src:window.location.hostname+"/MrHide/main.js"
+            }));
+        </script>
     </head>
     <body></body>
 </html>
