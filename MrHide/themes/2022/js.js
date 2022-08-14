@@ -22,5 +22,9 @@ MrHide.builders=Object.assign(MrHide.builders,{
             ${this.builders.build('title')}
             ${this.builders.build('author')}
         </header>`;
+    },
+
+    footer(){
+        return `<footer>Copyright ${new Date().getFullYear();} © ${this.username}. All rights reserved.</footer>`
     }
 })
