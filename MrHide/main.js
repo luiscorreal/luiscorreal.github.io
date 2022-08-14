@@ -111,7 +111,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             error(message,argument){
-                return `<div class='MrHide-error'><b>Error:</b>${message} (${argument})</div>`;
+                return `<div class='MrHide-error'><b>Error:</b> ${message} (${argument})</div>`;
             },
 
             layout(l){

@@ -20,6 +20,13 @@
 
 }
 
+div.MrHide-error{
+    background-color:var(--light-color);
+    padding:4px;
+    border:1px dashed var(--accent-color);
+    margin:4px;
+}div.MrHide-error>b{color:var(--accent-color);}
+
 html,body{
     padding:0;
     margin:0;
@@ -31,9 +38,13 @@ h1,h2,h3,h4,h5,h6,.ui{
     font-family:var(--sans-font);
 }
 header.main{
-    bacground-color:rgba(0,0,0,0.2);
-
+    background-color:
+    var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 img.featured-image{
     width:100%;
 }
@@ -42,21 +53,34 @@ main.page,main.post{
     max-width:20cm;
     padding:1em;
     margin:0 auto;
-    box-shadow:var(--down-box-shadow);
+    box-shadow:var(--top-box-shadow);
 }
 
 nav.main{
-    padding: 0.4em;
-    background-color:var(--primary-color);
-    margin:0;
+    padding: 0;
 
+    margin:0;
 }
-    nav.main>a{
-        display:inline-block;
-        padding:0.2em 0.2em;
-        text-decoration:none;
-        color:var(--darkest-color);
+    header.main a{
+        display:
+        inline-block;
+        padding: 0.3em 0.5em;
+        text-decoration:
+        none;
+        color:
+        var(--darkest-color);
+        /* font-family: var(--slab-font); */
     }
+header.main a.logo-home{
+    font-weight:bold;
+    padding:0.5em;
+}
+
+header.main nav a:hover{
+    /* background-color: rgba(0,0,0,0.4); */
+    color: var(--accent-color);
+    text-decoration: underline;
+}
 
 main h1{
     margin:0.05em 0;
