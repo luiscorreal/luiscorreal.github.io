@@ -2,7 +2,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
     pagesNavbar(){
         var ret='<nav class="main">',current;
 
-        this.layouts['page'].forEach((item, i) => {
+        this.layouts['pages'].forEach((item, i) => {
             current=(item.url==this.file.url)?'class="current" ':''
             ret+=`<a ${current} href='${this.path.root+'/'+item.url}'>${item.title}</a>`;
         });
