@@ -88,8 +88,6 @@ if(typeof window['MrHide'] !== 'function'){
             })
         }
 
-
-
         static process(){
             //file
             this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`).then(html=>{
@@ -112,13 +110,17 @@ if(typeof window['MrHide'] !== 'function'){
                 return this[name].apply(MrHide,attrs);
             },
 
+            error(message,argument){
+                return `<div class='MrHide-error'><b>Error:</b>${message} (${argument})</div>`;
+            },
+
             layout(l){
                 this.layout=l;
                 return '';
             },
 
             featuredImage(){
-                if(this.file.image !== undefined){
+                if(this.file.image !== undefined || this.file.image !==''){
                     return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
                 }else{
                     return '';
@@ -173,7 +175,7 @@ if(typeof window['MrHide'] !== 'function'){
                         return this.builders[parts[0]].apply(this,parts[1]);
                     }else{
                         if(this.settings.showErrors){
-                            return 'error: No builder function: '+parts[0];
+                            return this.builders.error('No builder function:',parts[0]);
                         }else{
                             return '';
                         }
