@@ -99,7 +99,6 @@ main.page,main.post{
     var(--top-box-shadow);
     background-color:
     var(--lightest-color);
-    min-height: 80vh;
 }
 
 nav.main{
