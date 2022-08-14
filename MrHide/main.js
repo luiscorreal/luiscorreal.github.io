@@ -239,19 +239,6 @@ if(typeof window['MrHide'] !== 'function'){
                 return `<h1>${this.file.title}</h1>`;
             },
 
-            /*categories(){
-                if(this.file.categories !== undefined){
-                    var ret='<nav class="categories">';
-                    this.file.categories.forEach((item, i) => {
-                        ret+=`<span>${item}</span>`;
-                    });
-                    ret+='</nav>';
-                    return ret;
-                }else{
-                    return '';
-                }
-            },*/
-
             contents(){
                 return `<article>${this.contents}</article>`;
             },

@@ -41,7 +41,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
 
     articleHeader(type){
         return `<header class='article-header'>
-            ${this.builders.build('categories')}
+            ${this.builders.build('categories',[this.file.categories])}
             ${this.builders.build('title')}
             ${this.builders.build('author')}
         </header>`;
