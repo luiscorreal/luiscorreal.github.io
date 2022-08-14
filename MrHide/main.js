@@ -265,7 +265,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             previewList(list,start=0,count=4){
-                this.layouts.add('post',this.path.root+'/MrHide/'+list+'/list.json').then(items=>{
+                this.layouts.add(list,this.path.root+'/MrHide/'+list+'/list.json').then(items=>{
                     var ret='';
                     items.forEach((item,i) => {
                         if(i<start)return;
