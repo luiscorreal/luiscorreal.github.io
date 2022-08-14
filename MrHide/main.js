@@ -199,7 +199,6 @@ if(typeof window['MrHide'] !== 'function'){
 
         static builders={//into these functions 'this' refers to MrHide object
             build(name,attrs=[]){
-                if(name==='categories')console.log(attrs)
                 return this[name].apply(MrHide,attrs);
             },
 
@@ -262,7 +261,6 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             categories(cats,wrap=['<span>','</span>']){
-                console.log(cats)
                 return "<nav class='categories'>"+cats.map(cat => wrap[0]+cat+wrap[1]).toString()+"</nav>";
             },
 
@@ -272,6 +270,7 @@ if(typeof window['MrHide'] !== 'function'){
                     items.forEach((item,i) => {
                         if(i<start)return;
                         if(i>start+count)return;
+                        console.log(this.categories)
 
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.root+'/'+list+'s/'+item.url}'>
