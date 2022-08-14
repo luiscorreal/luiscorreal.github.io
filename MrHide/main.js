@@ -142,7 +142,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
-
+console.log(pages)
                     //settings
                     fetch(this.path.settings).then(data=>data.json()).then(data=>{
                         //set default settings
