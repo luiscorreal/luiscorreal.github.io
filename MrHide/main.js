@@ -127,6 +127,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             author(){
                 if(this.file.author !== undefined){
+                    if(this.file.author === '')this.file.author=this.username;
                     return `<b class='author'>${this.file.author}</b>`;
                 }else{
                     return '';
@@ -151,7 +152,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             contents(){
-                return this.contents;
+                return `<article>this.contents</article>`;
             },
 
             user(field){

@@ -11,5 +11,13 @@ MrHide.builders=Object.assign(MrHide.builders,{
 
     header(){
         return `<header>${this.builders.build('pagesNavbar')}</header>`;
+    },
+
+    articleHeader(type){
+        return `<header class='article-header'>
+            ${this.builders.build('categories')}
+            ${this.builders.build('title')}
+            ${this.builders.build('author')}
+        </header>`;
     }
 })
