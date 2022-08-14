@@ -37,7 +37,10 @@ html,body{
     background-color:var(--light-color);
 }
 *{
-    font-family:var(--slab-font)
+    font-family:var(--slab-font);
+    box-sizing:content-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 h1,h2,h3,h4,h5,h6,.ui{
     font-family:var(--sans-font);
@@ -151,25 +154,58 @@ article a{
 
 
 div.user-profile{
-    text-align:center;
+    text-align:
+    center;
+    padding: 1em;
+    color: var(--lightest-color);
 }
 div.user-profile a{
-    color:var(--accent-color);
-    text-decoration:none;
+    color: var(--lightest-color);
+    text-decoration:
+    none;
+    display:
+    inline-block;
+    font-size:0.8em;
+    margin-right:4px;
+}
+div.user-profile a>i{
+    margin-right:3px;
+
 }
 div.user-profile>*{
-    display:inline-block;
-    vertical-align:top;
+    display:
+    inline-block;
+    vertical-align: middle;
+    text-align:
+    left;
 }
     div.user-profile img{
-        height:12em;
-        width:12em;
-        border-radius:6em;
+        height: 7em;
+        width: 7em;
+        border-radius: 4em;
         margin-right:1em;
     }
+div.user-profile p{
+    /* color:var(--mid-color); */
+    opacity: 0.7;
+}
+
+div.user-profile h2{
+    margin: 0.4em 0 0 0;
+    font-family: var(--slab-font);
+}
+div.user-profile>div>span{
+    font-size:0.7em;
+    /* color:var(--mid-color); */
+    display:
+    block;
+    margin-bottom:0.4em;
+    opacity: 0.7;
+}
 
 @media (max-width:769px){
     div.user-profile>*{
         display:block;
+        text-align:center;
     }
 }
