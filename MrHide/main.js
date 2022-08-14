@@ -256,11 +256,15 @@ if(typeof window['MrHide'] !== 'function'){
             previewList(list,start=0,count=4){
                 this.layouts.add('post',this.root+'/MrHide/'+list+'s/list.json').then(items=>{
                     var ret='';
-                    items.forEach((item) => {
+                    items.forEach((item,i) => {
+                        if(i<start)continue;
+                        if(i>start+count)break;
+                        
                         ret+=`<section>
                             <a href='${this.root+'/'+item.title}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
                                 <h3>${item.title}</h3>
+                                <b>${item.date}</b>
                                 <p>${item.summary}</p>
                             </a>
                         </section>`

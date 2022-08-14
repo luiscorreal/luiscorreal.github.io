@@ -161,7 +161,7 @@ article a{
 div.user-profile{
     text-align:
     center;
-    padding: 1em;
+    padding: 0 1em 1em 1em;
     color: var(--lightest-color);
     background-color: var(--primary-color);
 }
@@ -207,6 +207,27 @@ div.user-profile>div>span{
     block;
     margin-bottom:0.4em;
     opacity: 0.7;
+}
+
+
+
+div.preview-list{
+    display: flex;
+}
+div.preview-list section{
+    width:50%;
+    box-shadow: var(--top-box-shadow);
+    padding: 1em;
+}
+
+div.preview-list section a{
+    text-decoration:none;
+    color:unset;
+}
+div.preview-list section img{
+    width:100%;
+    object-fit: cover;
+    height: 50%;
 }
 
 @media (max-width:769px){
