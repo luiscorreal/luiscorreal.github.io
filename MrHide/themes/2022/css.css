@@ -72,6 +72,11 @@ img.featured-image{
     width:100%;
 }
 
+div.main-container{
+    max-width:32cm;
+    margin:0 auto;
+}
+
 main.page,main.post{
     max-width:20cm;
     padding:1em;
@@ -212,12 +217,15 @@ div.user-profile>div>span{
 
 div.preview-list{
     display: flex;
+    gap: 1em;
 }
 div.preview-list section{
-    width:50%;
+    width: 33%;
     box-shadow: var(--top-box-shadow);
     padding: 1em;
-    background-color:var(--lightest-color);
+    background-color:
+    var(--lightest-color);
+    overflow: hidden;
 }
 
 div.preview-list section a{
@@ -237,8 +245,10 @@ div.preview-list section h3,div.preview-list section p{
     margin:0.1em 0;
 }
 div.preview-list section p{
-    text-align:justify;
+    text-align:
+    justify;
     font-size:0.9em;
+
 }
 @media (max-width:769px){
     div.user-profile>*{

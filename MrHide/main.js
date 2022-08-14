@@ -272,6 +272,11 @@ if(typeof window['MrHide'] !== 'function'){
                     document.querySelector('div.'+list+'-preview-list').innerHTML=ret;
                 })
                 return '<div class="preview-list '+list+'-preview-list"></div>';
+            },
+
+            sectionHeading(text,url=''){
+                var b=(url==='')?'':`<a href='${url}>See all</a>'`
+                return `<h2 class='section-heading'><span>${tect}</span>${b}<hr></h2>`
             }
         }
 
