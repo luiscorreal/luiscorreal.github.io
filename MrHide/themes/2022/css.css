@@ -1,10 +1,30 @@
+:root{
+    --primary-color:#3fb1bb;
+    --primary-dark:#114172;
+}
+html,body{
+    padding:0;
+    margin:0;
+}
 header{
     bacground-color:rgba(0,0,0,0.2);
-    padding:1em;
 }
 img.featured-image{
     width:100%;
 }
+
 nav.main{
-    
+    padding: 0.4em;
+    background-color:var(--primary-color);
+    margin:0;
+}
+    nav.main>a{
+        display:inline-block;
+        padding:0.2em 0.2em;
+        text-decoration:none;
+        color:var(--primary-dark);
+    }
+
+main.file-info{
+    color:var(--primary-dark);
 }

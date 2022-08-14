@@ -118,11 +118,36 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
-                return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
+                if(this.file.image !=== undefined){
+                    return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
+                }else{
+                    return '';
+                }
+            },
+
+            featuredImage(){
+                if(this.file.author !=== undefined){
+                    return `<b class='author'>${this.file.author}</b>`;
+                }else{
+                    return '';
+                }
             },
 
             title(){
                 return `<h1>${this.file.title}</h1>`;
+            },
+
+            categories(){
+                if(this.file.categories !=== undefined){
+                    var ret='<nav class="categoriers">';
+                    this.file.categories.forEach((item, i) => {
+                        ret+=`<span>${item}</span>`;
+                    });
+                    ret+='</nav>';
+                    return ret;
+                }else{
+                    return '';
+                }
             },
 
             contents(){
