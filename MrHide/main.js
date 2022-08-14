@@ -114,7 +114,7 @@ if(typeof window['MrHide'] !== 'function'){
                         case 'root':return root;
                         case 'settings':return root+'/MrHide/settings.json';break;
                         case 'pages':return root+'/MrHide/pages/';break;
-                        case 'layout':return root+'/MrHide/'+(MrHide.layout==='page'?'pages':this.layout)+'/';break;
+                        case 'layout':return root+'/MrHide/'+(MrHide.layout==='page'?'pages':MrHide.layout)+'/';break;
                         default:''
                     }
                 }
