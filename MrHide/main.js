@@ -134,7 +134,7 @@ if(typeof window['MrHide'] !== 'function'){
                             this.file='index';
                             this.layout='page'
                         }
-
+                        console.log(this.root+'/MrHide/'+this.layout+'s/list.json')
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.layout,this.root+'/MrHide/'+this.layout+'s/list.json').then(pages=>{
                             if (this.file==='index' && this.layout==='page'){//index
@@ -151,7 +151,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 }
                             }
 
-                            console.log('jjjjjj')
+
 
                             this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
 
