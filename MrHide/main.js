@@ -198,11 +198,11 @@ if(typeof window['MrHide'] !== 'function'){
             //file contents
             this.processContents(this.path.file).then(html=>{
                 this.contents=html;
-console.log(this.layout);
+
                 if(this.layout!==''){
                     //layout
-                    console.log(this.path.theme+'layouts/'+this.layout+'.html')
                     this.processContents(this.path.theme+'layouts/'+this.layout+'.html').then(contents=>{
+                        console.log(contents)
                         document.body.innerHTML=contents;
                     })
                 }else{
