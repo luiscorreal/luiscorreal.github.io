@@ -312,6 +312,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                     }
                 });
+                console.log(newContents)
 
                 return newContents;
             })
