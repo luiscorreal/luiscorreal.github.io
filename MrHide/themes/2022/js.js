@@ -25,6 +25,6 @@ MrHide.builders=Object.assign(MrHide.builders,{
     },
 
     footer(){
-        return `<footer>Copyright ${y} © ${this.username}. All rights reserved.</footer>`;
+        return `<footer>Copyright ${this.builders.build('date','year')} © ${this.username}. All rights reserved.</footer>`;
     }
 })
