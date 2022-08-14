@@ -1,12 +1,12 @@
 MrHide.builders=Object.assign(MrHide.builders,{
     pagesNavbar(){
-        var ret='<nav class="main">',item,url,current;
-        for (item in this.layouts['page']) {
-            url=item;
-            item=this.layouts['page'][item];
-            current=(url==this.file.url)?'class="current" ':''
-            ret+=`<a ${current} href='${this.path.root+'/'+url}'>${item.title}</a>`;
-        }
+        var ret='<nav class="main">',current;
+
+        this.layouts['page'].forEach((item, i) => {
+            current=(item.url==this.file.url)?'class="current" ':''
+            ret+=`<a ${current} href='${this.path.root+'/'+item.url}'>${item.title}</a>`;
+        });
+
         return ret+'</nav>';
     },
 
