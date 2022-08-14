@@ -154,16 +154,12 @@ if(typeof window['MrHide'] !== 'function'){
                             if (this.file==='index' && this.layout==='page'){//index
                                 this.file={url:'index',title:this.user.name};
                             }else{
-                                console.log(this.layouts[this.layout])
-                                //... the problem is here because the post list is not a object; is a array
-                                if (!this.layouts[this.layout].hasOwnProperty(this.file)){//check if ressource does not exists
+                                var li=this.layouts[this.layout].find(x => x.url === this.file);
+                                if (li===undefined){//check if ressource does not exists
                                     this.file={url:'404',title:'404'};
                                     this.type='page';
                                 }else{
-                                    this.file={
-                                        url:this.file,
-                                        ... this.layouts[this.layout][this.file]
-                                    };
+                                    this.file=li;
                                 }
                             }
 
