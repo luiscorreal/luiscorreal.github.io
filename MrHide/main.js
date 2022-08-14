@@ -161,8 +161,6 @@ if(typeof window['MrHide'] !== 'function'){
                                 if (li===undefined){//check if ressource does not exists
                                     this.file={url:'404',title:'404'};
                                     this.layout='pages';
-
-                                    console.log('llll',this.layout,this.file)
                                 }else{
                                     this.file=li;
                                 }
@@ -198,6 +196,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file contents
+            console.log(this.path.file);
             this.processContents(this.path.file).then(html=>{
                 this.contents=html;
 
