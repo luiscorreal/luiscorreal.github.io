@@ -135,8 +135,6 @@ if(typeof window['MrHide'] !== 'function'){
                             this.layout='page'
                         }
 
-                        console.log(this.file,this.layout);
-
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.layout,this.root+'/MrHide/'+this.layout+'s/list.json').then(pages=>{
                             if (this.file==='index' && this.layout==='page'){//index
@@ -183,7 +181,8 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
-            //file
+            //file contents
+            console.log(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`)
             this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`).then(html=>{
                 this.contents=html;
 
