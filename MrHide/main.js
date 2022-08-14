@@ -277,7 +277,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 <img src='${this.path.root+'/MrHide/assets/'+item.image}'>
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
-                                ${item.author}
+                                ${this.builders.build('author')}
                                 <p>${item.summary.substr(0,128)+'...'}</p>
                             </a>
                         </section>`
