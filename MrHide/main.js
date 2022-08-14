@@ -294,8 +294,9 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static processContents(url){
-            if(this.file.url=='404' && this.layout)console.log(url)
+
             return fetch(url).then(data=>data.text()).then(contents=>{
+                if(this.file.url=='404' && this.layout)console.log(contents)
                 var regex=/<<(.+)>>/g,parts;
 
                 const newContents = contents.replace(regex, (match, $1) => {
@@ -312,7 +313,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                     }
                 });
-                console.log(newContents)
+                if(this.file.url=='404' && this.layout)console.log(newContents)
 
                 return newContents;
             })
