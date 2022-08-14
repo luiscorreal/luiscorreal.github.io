@@ -128,7 +128,7 @@ if(typeof window['MrHide'] !== 'function'){
             author(){
                 if(this.file.author !== undefined){
                     if(this.file.author === '')this.file.author=this.username;
-                    return `<b class='author'>${this.file.author}</b>`;
+                    return `<div>By <b class='author'>${this.file.author}</b> - ${this.file.date}</div>`;
                 }else{
                     return '';
                 }
