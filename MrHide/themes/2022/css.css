@@ -123,3 +123,14 @@ article{
     padding:0.5em;
     text-align:justify;
 }
+article a{
+    color:
+    var(--accent-color);
+    text-decoration:
+    none;
+}article a:hover{text-decoration:underline;}
+
+
+@media (max-width:769px){
+
+}
