@@ -84,19 +84,20 @@ if(typeof window['MrHide'] !== 'function'){
         static contents='';
         static settings;
         static layouts={
-            add(name,url){
+            add(name,url,sort=true){
                 if(name===''){
                     return Promise.resolve({});
                 }else if(this.hasOwnProperty('name')){
                     return Promise.resolve(this[name]);
                 }else{
                     return fetch(url).then(json=>json.json()).then(json=>{
-                        console.log(typeof json,json)
-                        json.sort((a, b)=> {
-                            var c = new Date(a.date);
-                            var d = new Date(b.date);
-                            return c-d;
-                        });
+                        if(Array.isArray(json) && sort){
+                            json.sort((a, b)=> {
+                                var c = new Date(a.date);
+                                var d = new Date(b.date);
+                                return c-d;
+                            });
+                        }
                         this[name]=json;
                         return json;
                     });
