@@ -261,6 +261,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             categories(cats,wrap=['<span>','</span>']){
+                console.log(cats)
                 return "<nav class='categories'>"+cats.map(cat => wrap[0]+cat+wrap[1]).toString()+"</nav>";
             },
 
