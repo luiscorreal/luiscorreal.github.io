@@ -103,7 +103,7 @@ if(typeof window['MrHide'] !== 'function'){
                 this.user=user;
                 //console.log(this.user.name)
                 var slashsplit=window.location.pathname.split('/');
-                this.user=window.location.hostname.split('.')[0];
+                //this.user=window.location.hostname.split('.')[0];
                 this.root='https://'+window.location.hostname;
                 this.layout=slashsplit[1];
                 this.file=slashsplit[2];
