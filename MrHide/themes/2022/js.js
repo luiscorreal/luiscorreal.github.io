@@ -11,7 +11,14 @@ MrHide.builders=Object.assign(MrHide.builders,{
     },
 
     userProfile(){
-        return 'Here will be my GitHub profile.';
+        return `<div class='user-profile'>
+            <img src='${this.user.avatar_url}'>
+            <div>
+                <h2>${this.user.name}</h2>
+                <a href='${this.user.url}'><i class="fa-brands fa-github" title="GitHub"></i></a>
+                <a href='${this.user.blog}'><i class="fa-solid fa-earth-americas"></i>${this.user.blog}</span></a>
+            </div>
+        </div>`
     },
 
     header(){
