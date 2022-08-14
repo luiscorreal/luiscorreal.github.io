@@ -261,7 +261,7 @@ if(typeof window['MrHide'] !== 'function'){
                         if(i>start+count)return;
 
                         ret+=`<section>
-                            <a href='${this.root+'/'+list+'s/'+item.title}'>
+                            <a href='${this.root+'/'+list+'s/'+item.url}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
@@ -276,7 +276,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             sectionHeading(text,url=''){
                 var b=(url==='')?'':`<a href='${url}>See all</a>'`
-                return `<h2 class='section-heading'><span>${tect}</span>${b}<hr></h2>`
+                return `<h2 class='section-heading'><span>${text}</span>${b}<hr></h2>`
             }
         }
 
