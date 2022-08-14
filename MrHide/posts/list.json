@@ -8,5 +8,15 @@
         "author":"",
         "image":"featured/creator.png",
         "summary":"Aunque para algunos es un poco tarde, los medios digitales enfocados en audiencias de consumidores de contenido(redes sociales, plataformas de microblogging, etc)"
+    },
+    {
+        "title":"SVG Viewer Extension for Windows Explorer",
+        "url":"SVG-Viewer-Extension-for-Windows-Explorer",
+        "categories":["Tecnología"],
+        "tags":["Windows 10","Windows Explorer","SVG","Extensiones","Inkscape","QT"],
+        "date":"2017-11-17",
+        "author":"",
+        "image":"featured/SVGViewerExtension.png",
+        "summary":"El el mundo del diseño, la previsualización de los diferentes formatos gráficos dentro de las carpetas de un sistema operativo es esencial en nuestra experiencia como usuarios; abrir una carpeta en la cual tienes centenares o miles de imágenes de formatos de edición y tan solo poder ver su nombre anexado a un icono blanco hace parte del desgaste al cual se han acostumbrado muchos diseñadores"
     }
 ]

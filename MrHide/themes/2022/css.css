@@ -217,6 +217,7 @@ div.preview-list section{
     width:50%;
     box-shadow: var(--top-box-shadow);
     padding: 1em;
+    background-color:var(--lightest-color);
 }
 
 div.preview-list section a{
