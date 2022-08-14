@@ -271,15 +271,10 @@ if(typeof window['MrHide'] !== 'function'){
                         if(i<start)return;
                         if(i>start+count)return;
 
-                        var cat=''
-                        if(item.categories!==[]){
-
-                        }
-
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.root+'/'+list+'s/'+item.url}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
-                                ${this.builder.build('categories')}
+                                ${this.builders.build('categories')}
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
                                 <p>${item.summary}</p>
