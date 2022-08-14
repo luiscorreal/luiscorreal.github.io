@@ -140,7 +140,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             categories(){
                 if(this.file.categories !== undefined){
-                    var ret='<nav class="categoriers">';
+                    var ret='<nav class="categories">';
                     this.file.categories.forEach((item, i) => {
                         ret+=`<span>${item}</span>`;
                     });
