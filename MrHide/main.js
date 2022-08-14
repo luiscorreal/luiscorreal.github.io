@@ -162,7 +162,7 @@ if(typeof window['MrHide'] !== 'function'){
                                     this.file={url:'404',title:'404'};
                                     this.layout='pages';
 
-                                    console.log(this.layout,this.file)
+                                    console.log('llll',this.layout,this.file)
                                 }else{
                                     this.file=li;
                                 }
