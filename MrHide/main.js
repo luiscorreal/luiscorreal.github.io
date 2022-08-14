@@ -120,6 +120,7 @@ console.log(name,MrHide.layout)
                     }
                 }
             })
+            
             MinGHAPI.user(window.location.hostname.split('.')[0]).then(user=>{
                 this.user=user;
                 //console.log(this.user.name)
@@ -127,6 +128,16 @@ console.log(name,MrHide.layout)
                 //this.user=window.location.hostname.split('.')[0];
                 this.layout=slashsplit[1];
                 this.file=slashsplit[2];
+
+                if(slashsplit.length===2){//is page
+                    this.file=this.layout;
+                    this.layout='page';
+                }
+
+                if(this.file===''){//is index page
+                    this.file='index';
+                    this.layout='page'
+                }
 
                 //list of public pages
                 this.layouts.add('page',this.path.pages+'list.json').then(pages=>{
@@ -138,15 +149,7 @@ console.log(name,MrHide.layout)
                             showErrors:false
                         },data);
 
-                        if(slashsplit.length===2){//is page
-                            this.file=this.layout;
-                            this.layout='page';
-                        }
 
-                        if(this.file===''){//is index page
-                            this.file='index';
-                            this.layout='page'
-                        }
 
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.layout,this.path.layout+'list.json').then(pages=>{
