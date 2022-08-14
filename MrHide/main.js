@@ -151,6 +151,8 @@ if(typeof window['MrHide'] !== 'function'){
                                 }
                             }
 
+                            console.log('jjjjjj')
+
                             this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
 
                             //theme logic js
