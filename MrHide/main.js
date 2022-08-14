@@ -110,7 +110,7 @@ if(typeof window['MrHide'] !== 'function'){
             this.path=new Proxy({},{
                 get(target,name) {
                     var root='https://'+window.location.hostname;
-console.log(name,MrHide)
+                    
                     switch(name){
                         case 'root':return root;
                         case 'settings':return root+'/MrHide/settings.json';break;
@@ -138,8 +138,6 @@ console.log(name,MrHide)
                     this.file='index';
                     this.layout='page'
                 }
-
-                console.log('mierrr',this.layout)
 
                 //list of public pages
                 this.layouts.add('page',this.path.pages+'list.json').then(pages=>{
