@@ -109,13 +109,15 @@ if(typeof window['MrHide'] !== 'function'){
         static build(){
             this.path=new Proxy({},{
                 get(target,name) {
-                    var root='https://'+window.location.hostname;
+                    var root='https://'+window.location.hostname,mrh=root+'/MrHide/';
 
                     switch(name){
                         case 'root':return root;
-                        case 'settings':return root+'/MrHide/settings.json';break;
-                        case 'pages':return root+'/MrHide/pages/';break;
-                        case 'layout':return root+'/MrHide/'+(MrHide.layout==='page'?'pages':MrHide.layout)+'/';break;
+                        case 'settings':return mrh+'settings.json';break;
+                        case 'pages':return mrh+'pages/';break;
+                        case 'layout':return mrh+(MrHide.layout==='page'?'pages':MrHide.layout)+'/';break;
+                        case 'theme':return mrh+'themes/'+MrHide.settings.theme+'/';break;
+                        case 'file':return mrh+MrHide.layout+'/'+MrHide.file.url+'.html';break;
                         default:''
                     }
                 }
@@ -164,15 +166,13 @@ if(typeof window['MrHide'] !== 'function'){
                                 }
                             }
 
-                            this.settings.themeUrl=this.path.root+'/MrHide/themes/'+this.settings.theme+'/';
-
                             //theme logic js
                             document.head.appendChild(Object.assign(document.createElement('script'),{
                                 type:"text/javascript",
                                 onload(){
                                     MrHide.process();
                                 },
-                                src:this.settings.themeUrl+'js.js'
+                                src:this.path.theme+'js.js'
                             }));
                             //font awesome
                             document.head.appendChild(Object.assign(document.createElement('link'),{
@@ -182,7 +182,7 @@ if(typeof window['MrHide'] !== 'function'){
                             // theme style css
                             document.head.appendChild(Object.assign(document.createElement('link'),{
                                 rel:"stylesheet",
-                                href:this.settings.themeUrl+'css.css'
+                                href:this.path.theme+'css.css'
                             }));
 
                         });
@@ -195,12 +195,12 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file contents
-            this.processContents(this.path.layout+this.file.url+'.html').then(html=>{
+            this.processContents(this.path.file).then(html=>{
                 this.contents=html;
-console.log(html);
+
                 if(this.layout!==''){
                     //layout
-                    this.processContents(this.settings.themeUrl+'layouts/'+this.layout+'.html').then(contents=>{
+                    this.processContents(this.path.theme+'layouts/'+this.layout+'.html').then(contents=>{
                         document.body.innerHTML=contents;
                     })
                 }else{
@@ -265,14 +265,14 @@ console.log(html);
             },
 
             previewList(list,start=0,count=4){
-                this.layouts.add('post',this.path.root+'/MrHide/'+list+'s/list.json').then(items=>{
+                this.layouts.add('post',this.path.root+'/MrHide/'+list+'/list.json').then(items=>{
                     var ret='';
                     items.forEach((item,i) => {
                         if(i<start)return;
                         if(i>start+count)return;
 
                         ret+=`<section class='preview-item ${list}-preview-item'>
-                            <a href='${this.path.root+'/'+list+'s/'+item.url}'>
+                            <a href='${this.path.root+'/'+list+'/'+item.url}'>
                                 <img src='${this.path.root+'/MrHide/assets/'+item.image}'>
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
