@@ -239,7 +239,7 @@ if(typeof window['MrHide'] !== 'function'){
                 return `<h1>${this.file.title}</h1>`;
             },
 
-            categories(){
+            /*categories(){
                 if(this.file.categories !== undefined){
                     var ret='<nav class="categories">';
                     this.file.categories.forEach((item, i) => {
@@ -250,7 +250,7 @@ if(typeof window['MrHide'] !== 'function'){
                 }else{
                     return '';
                 }
-            },
+            },*/
 
             contents(){
                 return `<article>${this.contents}</article>`;
@@ -258,6 +258,10 @@ if(typeof window['MrHide'] !== 'function'){
 
             user(field){
                 return this.user[field];
+            },
+
+            categories(cats,wrap=['<span>','</span>']){
+                return "<nav class='categories'>"+cats.map(cat => wrap[0]+cat+wrap[1]).toString()+"</nav>";
             },
 
             previewList(list,start=0,count=4){
@@ -275,7 +279,7 @@ if(typeof window['MrHide'] !== 'function'){
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.root+'/'+list+'s/'+item.url}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
-                                <div class='categories'>${item.categories.map(cat => `<span>${cat}</span>`).toString()}</div>
+                                ${this.builder.build('categories')}
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
                                 <p>${item.summary}</p>
