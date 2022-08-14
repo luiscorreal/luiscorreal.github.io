@@ -274,7 +274,7 @@ if(typeof window['MrHide'] !== 'function'){
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.root+'/'+list+'s/'+item.url}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
-                                ${this.builders.build('categories')}
+                                ${this.builders.build('categories',[this.categories])}
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
                                 <p>${item.summary}</p>
