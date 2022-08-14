@@ -78,7 +78,7 @@ if(typeof window['MinGHAPI'] !== 'function'){//Minimalist GitHub API
 if(typeof window['MrHide'] !== 'function'){
     window.MrHide = class  {
         static user;
-        static type;//the layout file
+        //static type;//the layout file
         static file;
         static path;//proxy to resolve all paths
         static contents='';
@@ -160,9 +160,9 @@ if(typeof window['MrHide'] !== 'function'){
 
                                 if (li===undefined){//check if ressource does not exists
                                     this.file={url:'404',title:'404'};
-                                    this.type='pages';
+                                    this.layout='pages';
 
-                                    console.log(this.type,this.file)
+                                    console.log(this.layout,this.file)
                                 }else{
                                     this.file=li;
                                 }
