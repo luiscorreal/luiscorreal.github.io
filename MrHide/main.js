@@ -162,7 +162,6 @@ if(typeof window['MrHide'] !== 'function'){
                                 }else{
                                     this.file=li;
                                 }
-                                console.log(this.file)
                             }
 
                             this.settings.themeUrl=this.path.root+'/MrHide/themes/'+this.settings.theme+'/';
@@ -195,6 +194,7 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
+            console.log(this.file.url+'.html')
             console.log(this.path.layout+this.file.url+'.html')
             //file contents
             this.processContents(this.path.layout+this.file.url+'.html').then(html=>{
