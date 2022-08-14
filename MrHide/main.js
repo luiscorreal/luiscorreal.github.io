@@ -261,17 +261,17 @@ if(typeof window['MrHide'] !== 'function'){
                         if(i>start+count)return;
 
                         ret+=`<section>
-                            <a href='${this.root+'/'+item.title}'>
+                            <a href='${this.root+'/'+list+'s/'+item.title}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
                                 <h3>${item.title}</h3>
-                                <b>${item.date}</b>
+                                <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
                                 <p>${item.summary}</p>
                             </a>
                         </section>`
                     });
                     document.querySelector('div.'+list+'-preview-list').innerHTML=ret;
                 })
-                return '<div class="'+list+'-preview-list"></div>';
+                return '<div class="preview-list '+list+'-preview-list"></div>';
             }
         }
 
