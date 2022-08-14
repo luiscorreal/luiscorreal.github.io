@@ -199,6 +199,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static builders={//into these functions 'this' refers to MrHide object
             build(name,attrs=[]){
+                if(name==='categories')console.log(atts)
                 return this[name].apply(MrHide,attrs);
             },
 
