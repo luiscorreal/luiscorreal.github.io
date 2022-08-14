@@ -155,6 +155,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 this.file={url:'index',title:this.user.name};
                             }else{
                                 var li=this.layouts[this.layout].find(x => x.url === this.file);
+                                console.log(li)
                                 if (li===undefined){//check if ressource does not exists
                                     this.file={url:'404',title:'404'};
                                     this.type='page';
