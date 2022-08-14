@@ -118,7 +118,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
-                if(this.file.image !=== undefined){
+                if(this.file.image !== undefined){
                     return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
                 }else{
                     return '';
@@ -126,7 +126,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
-                if(this.file.author !=== undefined){
+                if(this.file.author !== undefined){
                     return `<b class='author'>${this.file.author}</b>`;
                 }else{
                     return '';
@@ -138,7 +138,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             categories(){
-                if(this.file.categories !=== undefined){
+                if(this.file.categories !== undefined){
                     var ret='<nav class="categoriers">';
                     this.file.categories.forEach((item, i) => {
                         ret+=`<span>${item}</span>`;
