@@ -117,7 +117,7 @@ if(typeof window['MrHide'] !== 'function'){
                 return '';
             },
 
-            author(){
+            featuredImage(){
                 if(this.file.image !== undefined){
                     return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
                 }else{
@@ -125,7 +125,7 @@ if(typeof window['MrHide'] !== 'function'){
                 }
             },
 
-            featuredImage(){
+            author(){
                 if(this.file.author !== undefined){
                     return `<b class='author'>${this.file.author}</b>`;
                 }else{
