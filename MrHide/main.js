@@ -115,7 +115,7 @@ if(typeof window['MrHide'] !== 'function'){
                         case 'root':return root;
                         case 'settings':return mrh+'settings.json';break;
                         case 'pages':return mrh+'pages/';break;
-                        case 'layout':return mrh+(MrHide.layout==='page'?'pages':MrHide.layout)+'/';break;
+                        case 'layout':return mrh+MrHide.layout+'/';break;
                         case 'theme':return mrh+'themes/'+MrHide.settings.theme+'/';break;
                         case 'file':return mrh+MrHide.layout+'/'+MrHide.file.url+'.html';break;
                         default:''
@@ -132,12 +132,12 @@ if(typeof window['MrHide'] !== 'function'){
 
                 if(slashsplit.length===2){//is page
                     this.file=this.layout;
-                    this.layout='page';
+                    this.layout='pages';
                 }
 
                 if(this.file===''){//is index page
                     this.file='index';
-                    this.layout='page'
+                    this.layout='pages'
                 }
 
                 //list of public pages
