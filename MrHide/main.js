@@ -78,9 +78,9 @@ if(typeof window['MinGHAPI'] !== 'function'){//Minimalist GitHub API
 if(typeof window['MrHide'] !== 'function'){
     window.MrHide = class  {
         static user;
-        static root;//url well formed
         static type;//the layout file
         static file;
+        static path;//proxy to resolve all paths
         static contents='';
         static settings;
         static layouts={
@@ -106,20 +106,32 @@ if(typeof window['MrHide'] !== 'function'){
         };
 
         static build(){
+            this.path=new Proxy({},{
+                get(target,name) {
+                    var root='https://'+window.location.hostname';
+
+                    switch(typeof){
+                        case 'root':return root;
+                        case 'settings':return root+'/MrHide/settings.json';break;
+                        case 'pages':return root+'/MrHide/pages/';break;
+                        case 'layout':return root+'/MrHide/'+(MrHide.layout==='page'?'pages':this.layout)+'/';break;
+                        default:''
+                    }
+                }
+            })
             MinGHAPI.user(window.location.hostname.split('.')[0]).then(user=>{
                 this.user=user;
                 //console.log(this.user.name)
                 var slashsplit=window.location.pathname.split('/');
                 //this.user=window.location.hostname.split('.')[0];
-                this.root='https://'+window.location.hostname;
                 this.layout=slashsplit[1];
                 this.file=slashsplit[2];
 
                 //list of public pages
-                this.layouts.add('page',this.root+'/MrHide/pages/list.json').then(pages=>{
+                this.layouts.add('page',this.path.pages+'list.json').then(pages=>{
 
                     //settings
-                    fetch(this.root+'/MrHide/settings.json').then(data=>data.json()).then(data=>{
+                    fetch(this.path.settings).then(data=>data.json()).then(data=>{
                         //set default settings
                         this.settings=Object.assign({
                             showErrors:false
@@ -134,9 +146,9 @@ if(typeof window['MrHide'] !== 'function'){
                             this.file='index';
                             this.layout='page'
                         }
-                        console.log(this.root+'/MrHide/'+this.layout+'s/list.json')
+
                         //open specfic layout sources check if file exists
-                        this.layouts.add(this.layout,this.root+'/MrHide/'+(this.layout==='page'?'pages':this.layout)+'/list.json').then(pages=>{
+                        this.layouts.add(this.layout,this.path.layout+'list.json').then(pages=>{
                             if (this.file==='index' && this.layout==='page'){//index
                                 this.file={url:'index',title:this.user.name};
                             }else{
@@ -151,7 +163,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 }
                             }
 
-                            this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
+                            this.settings.themeUrl=this.path.root+'/MrHide/themes/'+this.settings.theme+'/';
 
                             //theme logic js
                             document.head.appendChild(Object.assign(document.createElement('script'),{
@@ -182,8 +194,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         static process(){
             //file contents
-            console.log(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`)
-            this.processContents(`${this.root}/MrHide/${this.layout}s/${this.file.url}.html`).then(html=>{
+            this.processContents(this.path.layout+this.file.url+'.html').then(html=>{
                 this.contents=html;
 
                 if(this.layout!==''){
@@ -221,7 +232,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             featuredImage(){
                 if(this.file.image !== undefined && this.file.image !==''){
-                    return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
+                    return `<img class='featured-image' src='${this.path.root}/MrHide/assets/${this.file.image}' >`;
                 }else{
                     return '';
                 }
@@ -253,15 +264,15 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             previewList(list,start=0,count=4){
-                this.layouts.add('post',this.root+'/MrHide/'+list+'s/list.json').then(items=>{
+                this.layouts.add('post',this.path.root+'/MrHide/'+list+'s/list.json').then(items=>{
                     var ret='';
                     items.forEach((item,i) => {
                         if(i<start)return;
                         if(i>start+count)return;
 
                         ret+=`<section class='preview-item ${list}-preview-item'>
-                            <a href='${this.root+'/'+list+'s/'+item.url}'>
-                                <img src='${this.root+'/MrHide/assets/'+item.image}'>
+                            <a href='${this.path.root+'/'+list+'s/'+item.url}'>
+                                <img src='${this.path.root+'/MrHide/assets/'+item.image}'>
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
