@@ -277,7 +277,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
-                                <p>${item.summary}</p>
+                                <p>${item.summary.substr(0,128)+...}</p>
                             </a>
                         </section>`
                     });
