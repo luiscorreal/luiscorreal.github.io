@@ -240,13 +240,16 @@ if(typeof window['MrHide'] !== 'function'){
                 }
             },
 
-            author(){
-                if(this.file.author !== undefined){
+            author(item=null){
+                if(item===null)item=this.file;
+
+                /*if(this.file.author !== undefined){
                     if(this.file.author === '')this.file.author=this.user.login;
                     return `<div>By <b class='author'>${this.file.author}</b> - ${this.file.date}</div>`;
                 }else{
                     return '';
-                }
+                }*/
+                return `<div>By <b class='author'>${item.author || ''}</b> - ${item.date || ''}</div>`;
             },
 
             title(){
@@ -277,7 +280,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 <img src='${this.path.root+'/MrHide/assets/'+item.image}'>
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
-                                ${this.builders.build('author')}
+                                ${this.builders.build('author',[item])}
                                 <p>${item.summary.substr(0,128)+'...'}</p>
                             </a>
                         </section>`
