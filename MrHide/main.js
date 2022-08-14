@@ -251,6 +251,21 @@ if(typeof window['MrHide'] !== 'function'){
 
             user(field){
                 return this.user[field];
+            },
+
+            previewList(list,start=0,count=4){
+                this.layouts.add('post',this.root+'/MrHide/'+list+'s/list.json').then{
+                    var ret='';
+                    items.forEach((item) => {
+                        ret+=`<section>
+                            <img src='${this.root+'/assets/'+item.image}'>
+                            <h3>${item.title}</h3>
+                            <p>${item.summary}</p>
+                        </section>`
+                    });
+                    document.querySelector('div.'+list+'-preview-list').innerHTML=ret;
+                }
+                return '<div class="'+list+'-preview-list"></div>';
             }
         }
 

@@ -164,8 +164,6 @@ div.user-profile{
     padding: 1em;
     color: var(--lightest-color);
     background-color: var(--primary-color);
-    margin: -1em;
-    /* border-top: 1px solid var(--accent-color); */
 }
 div.user-profile a{
     color: var(--lightest-color);

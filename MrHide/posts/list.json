@@ -1,12 +1,12 @@
 [
     {
-        "title":"About",
-        "url":"about",
-        "categories":[],
-        "tags":[],
-        "date":"2022-04-12",
+        "title":"Las redes sociales y sus apuestas por los creadores de contenidos",
+        "url":"las-redes-sociales-y-sus-apuestas-por-los-creadores-de-contenidos",
+        "categories":["Tecnología"],
+        "tags":["Facebook","Twitter","Yahoo","Tumblr","Flickr","Instagram","Youtube","Microblogging","Creadores de contenido","Redes sociales","Publicidad digital"],
+        "date":"2017-04-13",
         "author":"",
-        "image":"",
-        "summary":"What we what to do here!"
+        "image":"featured/creator.png",
+        "summary":"Aunque para algunos es un poco tarde, los medios digitales enfocados en audiencias de consumidores de contenido(redes sociales, plataformas de microblogging, etc)"
     }
 ]
