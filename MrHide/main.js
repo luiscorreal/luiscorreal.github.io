@@ -119,6 +119,13 @@ if(typeof window['MrHide'] !== 'function'){
                 return '';
             },
 
+            date(field){
+                var d=new Date();
+                switch(field){
+                    case 'year':return d.getFullYear();break;
+                }
+            },
+
             featuredImage(){
                 if(this.file.image !== undefined && this.file.image !==''){
                     return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
@@ -160,6 +167,7 @@ if(typeof window['MrHide'] !== 'function'){
             user(field){
                 switch(field){
                     case 'name':return 'hey';break;
+                    case 'username':return this.username;break;
                 }
             }
         }
