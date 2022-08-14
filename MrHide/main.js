@@ -152,7 +152,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             contents(){
-                return `<article>this.contents</article>`;
+                return `<article>${this.contents}</article>`;
             },
 
             user(field){
