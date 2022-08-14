@@ -109,7 +109,7 @@ if(typeof window['MrHide'] !== 'function'){
             this.path=new Proxy({},{
                 get(target,name) {
                     var root='https://'+window.location.hostname;
-
+console.log(name,MrHide.layout)
                     switch(name){
                         case 'root':return root;
                         case 'settings':return root+'/MrHide/settings.json';break;
