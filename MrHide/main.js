@@ -101,7 +101,7 @@ if(typeof window['MrHide'] !== 'function'){
         static build(){
             MinGHAPI.user(window.location.hostname.split('.')[0]).then(user=>{
                 this.user=user;
-                console.log(this.user.name)
+                //console.log(this.user.name)
                 var slashsplit=window.location.pathname.split('/');
                 this.user=window.location.hostname.split('.')[0];
                 this.root='https://'+window.location.hostname;
