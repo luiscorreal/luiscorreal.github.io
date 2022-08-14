@@ -148,7 +148,7 @@ nav.categories>*{
     background-color:var(--light-color);
     display:inline-block;
     padding:0.2em 0.4em;
-    margin-left:0.2em;
+    margin-right:0.2em;
     text-transform:uppercase;
     color:var(--accent-color);
     font-size:0.7em;

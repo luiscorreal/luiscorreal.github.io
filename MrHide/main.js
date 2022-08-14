@@ -110,7 +110,7 @@ if(typeof window['MrHide'] !== 'function'){
             this.path=new Proxy({},{
                 get(target,name) {
                     var root='https://'+window.location.hostname;
-                    
+
                     switch(name){
                         case 'root':return root;
                         case 'settings':return root+'/MrHide/settings.json';break;
@@ -123,9 +123,8 @@ if(typeof window['MrHide'] !== 'function'){
 
             MinGHAPI.user(window.location.hostname.split('.')[0]).then(user=>{
                 this.user=user;
-                //console.log(this.user.name)
+
                 var slashsplit=window.location.pathname.split('/');
-                //this.user=window.location.hostname.split('.')[0];
                 this.layout=slashsplit[1];
                 this.file=slashsplit[2];
 
@@ -148,7 +147,6 @@ if(typeof window['MrHide'] !== 'function'){
                         this.settings=Object.assign({
                             showErrors:false
                         },data);
-
 
 
                         //open specfic layout sources check if file exists
@@ -199,6 +197,7 @@ if(typeof window['MrHide'] !== 'function'){
         static process(){
             //file contents
             this.processContents(this.path.layout+this.file.url+'.html').then(html=>{
+                console.log(html)
                 this.contents=html;
 
                 if(this.layout!==''){
