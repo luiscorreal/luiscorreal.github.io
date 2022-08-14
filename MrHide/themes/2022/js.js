@@ -1,11 +1,10 @@
 MrHide.builders=Object.assign(MrHide.builders,{
     pagesNavbar(){
-        var ret='<nav class="main">',item;
-        console.log(this.layouts['page'])
+        var ret='<nav class="main">',item,url;
         for (item in this.layouts['page']) {
+            url=item;
             item=this.layouts['page'][item];
-
-            ret+=`<a href='${this.root+'/'+item.url+'.html'}'>${item.title}</a>`;
+            ret+=`<a href='${this.root+'/'+url+'.html'}'>${item.title}</a>`;
         }
         return ret+'</nav>';
     },
