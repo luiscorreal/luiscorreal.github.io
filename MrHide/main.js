@@ -257,9 +257,9 @@ if(typeof window['MrHide'] !== 'function'){
                 this.layouts.add('post',this.root+'/MrHide/'+list+'s/list.json').then(items=>{
                     var ret='';
                     items.forEach((item,i) => {
-                        if(i<start)continue;
-                        if(i>start+count)break;
-                        
+                        if(i<start)return;
+                        if(i>start+count)return;
+
                         ret+=`<section>
                             <a href='${this.root+'/'+item.title}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
