@@ -4,8 +4,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
         for (item in this.layouts['page']) {
             url=item;
             item=this.layouts['page'][item];
-            current=(url==this.file)?'class="current" ':''
-            console.log(url,this.file.url)
+            current=(url==this.file.url)?'class="current" ':''
             ret+=`<a ${current} href='${this.root+'/'+url}'>${item.title}</a>`;
         }
         return ret+'</nav>';
