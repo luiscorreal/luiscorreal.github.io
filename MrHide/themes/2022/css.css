@@ -34,6 +34,7 @@ div.MrHide-error{
 html,body{
     padding:0;
     margin:0;
+    background-color:var(--light-color);
 }
 *{
     font-family:var(--slab-font)
@@ -72,6 +73,7 @@ main.page,main.post{
     padding:1em;
     margin:0 auto;
     box-shadow:var(--top-box-shadow);
+    background-color:var(--lightest-color);
 }
 
 nav.main{
@@ -147,6 +149,27 @@ article a{
 }article a:hover{text-decoration:underline;}
 
 
-@media (max-width:769px){
 
+div.user-profile{
+    text-align:center;
+}
+div.user-profile a{
+    color:var(--accent-color);
+    text-decoration:none;
+}
+div.user-profile>*{
+    display:inline-block;
+    vertical-align:top;
+}
+    div.user-profile img{
+        height:12em;
+        width:12em;
+        border-radius:6em;
+        margin-right:1em;
+    }
+
+@media (max-width:769px){
+    div.user-profile>*{
+        display:block;
+    }
 }

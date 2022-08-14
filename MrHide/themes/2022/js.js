@@ -12,7 +12,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
 
     userProfile(){
         return `<div class='user-profile'>
-            <img src='${this.user.avatar_url}'>
+            <div><img src='${this.user.avatar_url}'></div>
             <div>
                 <h2>${this.user.name}</h2>
                 <a href='${this.user.url}'><i class="fa-brands fa-github" title="GitHub"></i></a>
