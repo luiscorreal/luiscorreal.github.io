@@ -270,12 +270,11 @@ if(typeof window['MrHide'] !== 'function'){
                     items.forEach((item,i) => {
                         if(i<start)return;
                         if(i>start+count)return;
-                        console.log(this.categories)
 
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.root+'/'+list+'s/'+item.url}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
-                                ${this.builders.build('categories',[this.categories])}
+                                ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
                                 <p>${item.summary}</p>
