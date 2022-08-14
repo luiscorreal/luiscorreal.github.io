@@ -142,7 +142,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
-console.log(pages)
+
                     //settings
                     fetch(this.path.settings).then(data=>data.json()).then(data=>{
                         //set default settings
@@ -153,14 +153,14 @@ console.log(pages)
 
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.layout,this.path.layout+'list.json').then(pages=>{
-                            if (this.file==='index' && this.layout==='page'){//index
+                            if (this.file==='index' && this.layout==='pages'){//index
                                 this.file={url:'index',title:this.user.name};
                             }else{
                                 var li=this.layouts[this.layout].find(x => x.url === this.file);
 
                                 if (li===undefined){//check if ressource does not exists
                                     this.file={url:'404',title:'404'};
-                                    this.type='page';
+                                    this.type='pages';
                                 }else{
                                     this.file=li;
                                 }
