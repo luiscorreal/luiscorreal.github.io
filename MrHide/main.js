@@ -110,7 +110,7 @@ if(typeof window['MrHide'] !== 'function'){
             this.path=new Proxy({},{
                 get(target,name) {
                     var root='https://'+window.location.hostname;
-console.log(name,MrHide.layout)
+console.log(name,MrHide)
                     switch(name){
                         case 'root':return root;
                         case 'settings':return root+'/MrHide/settings.json';break;
@@ -120,7 +120,7 @@ console.log(name,MrHide.layout)
                     }
                 }
             })
-            
+
             MinGHAPI.user(window.location.hostname.split('.')[0]).then(user=>{
                 this.user=user;
                 //console.log(this.user.name)
