@@ -91,7 +91,7 @@ if(typeof window['MrHide'] !== 'function'){
                     return Promise.resolve(this[name]);
                 }else{
                     return fetch(url).then(json=>json.json()).then(json=>{
-                        console.log(typeof json)
+                        console.log(typeof json,json)
                         json.sort((a, b)=> {
                             var c = new Date(a.date);
                             var d = new Date(b.date);
