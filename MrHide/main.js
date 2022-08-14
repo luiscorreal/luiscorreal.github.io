@@ -95,7 +95,7 @@ if(typeof window['MrHide'] !== 'function'){
                             json.sort((a, b)=> {
                                 var c = new Date(a.date);
                                 var d = new Date(b.date);
-                                return c-d;
+                                return d-c;
                             });
                         }
                         this[name]=json;
