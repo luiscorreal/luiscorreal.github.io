@@ -88,6 +88,14 @@ nav.main{
 header.main a.logo-home{
     padding:0.5em;
 }
+header.main a.logo-home>img{
+    height:1em;
+    border-radius:0.5em;
+    margin-right:4px;
+}
+header.main a.logo-home>*{
+    vertical-align:middle;
+}
 
 header.main nav a:hover{
     /* background-color: rgba(0,0,0,0.4); */
