@@ -120,7 +120,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
-                if(this.file.image !== undefined || this.file.image !==''){
+                if(this.file.image !== undefined && this.file.image !==''){
                     return `<img class='featured-image' src='${this.root}/MrHide/assets/${this.file.image}' >`;
                 }else{
                     return '';
