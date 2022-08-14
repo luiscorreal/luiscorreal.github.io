@@ -277,7 +277,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 <img src='${this.path.root+'/MrHide/assets/'+item.image}'>
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
-                                <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
+                                ${item.author}
                                 <p>${item.summary.substr(0,128)+'...'}</p>
                             </a>
                         </section>`
