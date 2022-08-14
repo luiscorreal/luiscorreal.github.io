@@ -136,7 +136,7 @@ if(typeof window['MrHide'] !== 'function'){
                         }
                         console.log(this.root+'/MrHide/'+this.layout+'s/list.json')
                         //open specfic layout sources check if file exists
-                        this.layouts.add(this.layout,this.root+'/MrHide/'+this.layout+'s/list.json').then(pages=>{
+                        this.layouts.add(this.layout,this.root+'/MrHide/'+(this.layout==='page'?'pages':this.layout)+'/list.json').then(pages=>{
                             if (this.file==='index' && this.layout==='page'){//index
                                 this.file={url:'index',title:this.user.name};
                             }else{
@@ -150,8 +150,6 @@ if(typeof window['MrHide'] !== 'function'){
                                     };
                                 }
                             }
-
-
 
                             this.settings.themeUrl=this.root+'/MrHide/themes/'+this.settings.theme+'/';
 
