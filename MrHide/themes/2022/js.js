@@ -9,9 +9,13 @@ MrHide.builders=Object.assign(MrHide.builders,{
         return ret+'</nav>';
     },
 
+    userProfile(){
+        return 'Here will be my GitHub profile.';
+    },
+
     header(){
         return `<header class='main'>
-            <a href='${this.root}' class='logo-home'>${this.settings.title || this.username}</a>
+            <a href='${this.root}' class='logo-home'><img src='${this.user.avatar_url}'> ${this.user.name}</a>
             ${this.builders.build('pagesNavbar')}
         </header>`;
     },
@@ -25,6 +29,6 @@ MrHide.builders=Object.assign(MrHide.builders,{
     },
 
     footer(){
-        return `<footer>Copyright ${this.builders.build('date',['year'])} © ${this.username}. All rights reserved.</footer>`;
+        return `<footer>Copyright ${this.builders.build('date',['year'])} © ${this.user.login}. All rights reserved.</footer>`;
     }
 })
