@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Slabo+13px&display=swap');
 
 :root{
-    --sans-font: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-    --slab-font: 'Slabo 13px';
+    --sans-font:
+    -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    --slab-font:
+    'Slabo 13px';
 
-    --primary-color:#3fb1bb;
-    --primary-dark:#114172;
+    --primary-color: #1d2327;
+    --primary-dark: #13191c;
 
     --accent-color:#da3500;
 
@@ -14,10 +16,12 @@
     --mid-color:#5b5b5b;
     --darkest-color:black;
 
-    --down-box-shadow:0 4px 6px rgba(0,0,0,0.25),0 4px 2px rgba(0,0,0,0.3);
-    --top-box-shadow:0 0 6px rgba(0,0,0,0.25),0 0 2px rgba(0,0,0,0.3);
-    --up-box-shadow:0 -4px 6px rgba(0,0,0,0.5),0 -4px 2px rgba(0,0,0,0.3);
-
+    --down-box-shadow:0 4px 6px
+    rgba(0,0,0,0.25),0 4px 2px rgba(0,0,0,0.3);
+    --top-box-shadow:0 0 6px
+    rgba(0,0,0,0.25),0 0 2px rgba(0,0,0,0.3);
+    --up-box-shadow:0 -4px 6px
+    rgba(0,0,0,0.5),0 -4px 2px rgba(0,0,0,0.3);
 }
 
 div.MrHide-error{
@@ -81,9 +85,8 @@ nav.main{
         padding: 0.3em 0.5em;
         text-decoration:
         none;
-        color:
-        var(--darkest-color);
-        /* font-family: var(--slab-font); */
+        color: var(--light-color);
+
     }
 header.main a.logo-home{
     padding:0.5em;
@@ -96,11 +99,17 @@ header.main a.logo-home>img{
 header.main a.logo-home>*{
     vertical-align:middle;
 }
-
+header.main nav a{
+    opacity:0.7;
+}
 header.main nav a:hover{
-    /* background-color: rgba(0,0,0,0.4); */
-    color: var(--accent-color);
     text-decoration: underline;
+    opacity:1;
+}
+header.main nav a.current{
+    font-weight:
+    bold;
+    opacity:1;
 }
 
 main h1{
