@@ -83,6 +83,7 @@ if(typeof window['MrHide'] !== 'function'){
         static path;//proxy to resolve all paths
         static contents='';
         static settings;
+        static layout;
         static layouts={
             add(name,url,sort=true){
                 if(name===''){
@@ -109,7 +110,7 @@ if(typeof window['MrHide'] !== 'function'){
             this.path=new Proxy({},{
                 get(target,name) {
                     var root='https://'+window.location.hostname;
-console.log(name,MrHide.file.layout)
+console.log(name,MrHide.layout)
                     switch(name){
                         case 'root':return root;
                         case 'settings':return root+'/MrHide/settings.json';break;
