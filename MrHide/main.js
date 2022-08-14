@@ -254,7 +254,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             previewList(list,start=0,count=4){
-                this.layouts.add('post',this.root+'/MrHide/'+list+'s/list.json').then{
+                this.layouts.add('post',this.root+'/MrHide/'+list+'s/list.json').then(items=>{
                     var ret='';
                     items.forEach((item) => {
                         ret+=`<section>
@@ -264,7 +264,7 @@ if(typeof window['MrHide'] !== 'function'){
                         </section>`
                     });
                     document.querySelector('div.'+list+'-preview-list').innerHTML=ret;
-                }
+                })
                 return '<div class="'+list+'-preview-list"></div>';
             }
         }
