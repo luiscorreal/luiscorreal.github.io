@@ -202,6 +202,7 @@ div.user-profile>*{
     vertical-align: middle;
     text-align:
     left;
+    /* max-width: 30em; */
 }
     div.user-profile img{
         height: 7em;
@@ -210,8 +211,11 @@ div.user-profile>*{
         margin-right:1em;
     }
 div.user-profile p{
-    /* color:var(--mid-color); */
+    /* color:
+    var(--mid-color); */
     opacity: 0.7;
+    max-width: 30em;
+    margin: 1em auto 0 auto;
 }
 
 div.user-profile h2{
@@ -232,10 +236,10 @@ div.user-profile>div>span{
 div.preview-list{
     display: flex;
     gap: 1em;
-    /*flex-wrap: wrap;*/
+    flex-wrap: wrap;
 }
 div.preview-list section{
-    width: 33%;
+    width: calc(33% - 1em);
     box-shadow: var(--top-box-shadow);
     padding: 1em;
     background-color:
@@ -244,7 +248,7 @@ div.preview-list section{
 }
 
 div.preview-list section:last-child{
-    flex-grow:1;
+    /* flex-grow:1; */
 }
 
 div.preview-list section a{
@@ -273,17 +277,19 @@ div.preview-list section p{
 
 @media (max-width:1025px){
     div.preview-list section{
-        width:49%;
+        width: calc(50% - 1em);
     }
 }
 
 
 @media (max-width:769px){
     div.user-profile>*{
-        display:block;
-        text-align:center;
+        display:
+        block;
+        text-align:
+        center;
     }
     div.preview-list section{
-        width:100%;
+        width: 100%;
     }
 }

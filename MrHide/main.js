@@ -267,9 +267,15 @@ if(typeof window['MrHide'] !== 'function'){
                         if(i<start)return;
                         if(i>start+count)return;
 
-                        ret+=`<section>
+                        var cat=''
+                        if(item.categories!==[]){
+
+                        }
+
+                        ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.root+'/'+list+'s/'+item.url}'>
                                 <img src='${this.root+'/MrHide/assets/'+item.image}'>
+                                <div class='categories'>${item.categories.map(cat => `<span>${cat}</span>`).toString()}</div>
                                 <h3>${item.title}</h3>
                                 <b><i class="fa-solid fa-calendar"></i> <span>${item.date}</span></b>
                                 <p>${item.summary}</p>
