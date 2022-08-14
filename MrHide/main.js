@@ -139,7 +139,7 @@ console.log(name,MrHide)
                     this.layout='page'
                 }
 
-                console.log(MrHide.layout)
+                console.log(this.layout)
 
                 //list of public pages
                 this.layouts.add('page',this.path.pages+'list.json').then(pages=>{
