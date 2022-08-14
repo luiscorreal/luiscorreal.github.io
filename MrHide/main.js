@@ -202,7 +202,6 @@ if(typeof window['MrHide'] !== 'function'){
                 if(this.layout!==''){
                     //layout
                     this.processContents(this.path.theme+'layouts/'+this.layout+'.html').then(contents=>{
-                        console.log(contents)
                         document.body.innerHTML=contents;
                     })
                 }else{
@@ -295,6 +294,7 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static processContents(url){
+            if(this.file.url=='404' && this.layout)console.log(url)
             return fetch(url).then(data=>data.text()).then(contents=>{
                 var regex=/<<(.+)>>/g,parts;
 
