@@ -110,7 +110,7 @@ if(typeof window['MrHide'] !== 'function'){
                 get(target,name) {
                     var root='https://'+window.location.hostname;
 
-                    switch(typeof){
+                    switch(name){
                         case 'root':return root;
                         case 'settings':return root+'/MrHide/settings.json';break;
                         case 'pages':return root+'/MrHide/pages/';break;
