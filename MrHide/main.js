@@ -194,12 +194,10 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
-            console.log(this.file.url+'.html')
-            console.log(this.path.layout+this.file.url+'.html')
             //file contents
             this.processContents(this.path.layout+this.file.url+'.html').then(html=>{
                 this.contents=html;
-
+console.log(html);
                 if(this.layout!==''){
                     //layout
                     this.processContents(this.settings.themeUrl+'layouts/'+this.layout+'.html').then(contents=>{
