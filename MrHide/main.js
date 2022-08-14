@@ -115,7 +115,7 @@ if(typeof window['MrHide'] !== 'function'){
                 this.layout=slashsplit[1];
                 this.file=slashsplit[2];
 
-                //pages
+                //list of public pages
                 this.layouts.add('page',this.root+'/MrHide/pages/list.json').then(pages=>{
 
                     //settings
@@ -134,6 +134,8 @@ if(typeof window['MrHide'] !== 'function'){
                             this.file='index';
                             this.layout='page'
                         }
+
+                        console.log(this.file,this.layout);
 
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.layout,this.root+'/MrHide/'+this.layout+'s/list.json').then(pages=>{

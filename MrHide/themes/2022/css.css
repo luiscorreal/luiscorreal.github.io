@@ -286,8 +286,10 @@ div.preview-list section p{
     div.user-profile>*{
         display:
         block;
-        text-align:
-        center;
+        text-align:center;
+    }
+    div.user-profile img{
+        margin-right:0;
     }
     div.preview-list section{
         width: 100%;
