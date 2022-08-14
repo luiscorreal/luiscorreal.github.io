@@ -1,3 +1,5 @@
 {
-    "theme":"2022"
+    "theme":"2022",
+    "showErrors":true,
+    "title":"Luis Correa"
 }
