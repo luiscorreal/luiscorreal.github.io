@@ -15,8 +15,11 @@ MrHide.builders=Object.assign(MrHide.builders,{
             <div><img src='${this.user.avatar_url}'></div>
             <div>
                 <h2>${this.user.name}</h2>
-                <a href='${this.user.url}'><i class="fa-brands fa-github" title="GitHub"></i></a>
+                <span><i class="fa-solid fa-location-dot"></i> ${this.user.location}</span>
+                <a href='${this.user.html_url}'><i class="fa-brands fa-github" title="GitHub"><span>GitHub profile</span></i></a>
                 <a href='${this.user.blog}'><i class="fa-solid fa-earth-americas"></i>${this.user.blog}</span></a>
+                <a href='https://twitter.com/${this.user.twitter_username}'><i class="fa-brands fa-twitter"></i></i>@${this.user.twitter_username}</span></a>
+                <p>${this.user.bio}</p>
             </div>
         </div>`
     },
