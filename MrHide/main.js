@@ -258,9 +258,11 @@ if(typeof window['MrHide'] !== 'function'){
                     var ret='';
                     items.forEach((item) => {
                         ret+=`<section>
-                            <img src='${this.root+'/assets/'+item.image}'>
-                            <h3>${item.title}</h3>
-                            <p>${item.summary}</p>
+                            <a href='${this.root+'/'+item.title}'>
+                                <img src='${this.root+'/MrHide/assets/'+item.image}'>
+                                <h3>${item.title}</h3>
+                                <p>${item.summary}</p>
+                            </a>
                         </section>`
                     });
                     document.querySelector('div.'+list+'-preview-list').innerHTML=ret;
