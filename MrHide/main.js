@@ -108,7 +108,7 @@ if(typeof window['MrHide'] !== 'function'){
         static build(){
             this.path=new Proxy({},{
                 get(target,name) {
-                    var root='https://'+window.location.hostname';
+                    var root='https://'+window.location.hostname;
 
                     switch(typeof){
                         case 'root':return root;
