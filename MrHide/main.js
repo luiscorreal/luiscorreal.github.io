@@ -141,7 +141,7 @@ if(typeof window['MrHide'] !== 'function'){
                 }
 
                 //list of public pages
-                this.layouts.add('page',this.path.pages+'list.json').then(pages=>{
+                this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
 
                     //settings
                     fetch(this.path.settings).then(data=>data.json()).then(data=>{
