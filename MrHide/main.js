@@ -91,6 +91,11 @@ if(typeof window['MrHide'] !== 'function'){
                     return Promise.resolve(this[name]);
                 }else{
                     return fetch(url).then(json=>json.json()).then(json=>{
+                        json.sort(function(a, b) {
+                            var c = new Date(a.date);
+                            var d = new Date(b.date);
+                            return c-d;
+                        });
                         this[name]=json;
                         return json;
                     });

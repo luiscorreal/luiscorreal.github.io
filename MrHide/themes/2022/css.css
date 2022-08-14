@@ -47,6 +47,19 @@ h1,h2,h3,h4,h5,h6,.ui{
     font-family:var(--sans-font);
 }
 
+h2.section-heading{
+    display: flex;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+h2.section-heading>span,h2.section-heading>a{
+    padding-right:1em;
+}
+h2.section-heading>hr{
+    flex-grow:1;
+    border:none;
+    border-bottom:1px dashed var(--primary-color);
+}
 footer{
     font-size:0.9em;
     color:
@@ -75,6 +88,7 @@ img.featured-image{
 div.main-container{
     max-width:32cm;
     margin:0 auto;
+    padding: 0 1em;
 }
 
 main.page,main.post{
@@ -218,6 +232,7 @@ div.user-profile>div>span{
 div.preview-list{
     display: flex;
     gap: 1em;
+    /*flex-wrap: wrap;*/
 }
 div.preview-list section{
     width: 33%;
@@ -226,6 +241,10 @@ div.preview-list section{
     background-color:
     var(--lightest-color);
     overflow: hidden;
+}
+
+div.preview-list section:last-child{
+    flex-grow:1;
 }
 
 div.preview-list section a{
@@ -250,9 +269,21 @@ div.preview-list section p{
     font-size:0.9em;
 
 }
+
+
+@media (max-width:1025px){
+    div.preview-list section{
+        width:49%;
+    }
+}
+
+
 @media (max-width:769px){
     div.user-profile>*{
         display:block;
         text-align:center;
+    }
+    div.preview-list section{
+        width:100%;
     }
 }
