@@ -14,7 +14,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
     },
 
     header(){
-        console.log(this.user)
+        console.log(this)
         return `<header class='main'>
             <a href='${this.root}' class='logo-home'><img src='${this.user.avatar_url}'> ${this.user.name}</a>
             ${this.builders.build('pagesNavbar')}
