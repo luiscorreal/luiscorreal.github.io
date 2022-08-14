@@ -11,7 +11,7 @@
 
     --light-color:#f4f4f4;
     --lightest-color:white;
-
+    --mid-color:#5b5b5b;
     --darkest-color:black;
 
     --down-box-shadow:0 4px 6px rgba(0,0,0,0.25),0 4px 2px rgba(0,0,0,0.3);
@@ -37,6 +37,20 @@ html,body{
 h1,h2,h3,h4,h5,h6,.ui{
     font-family:var(--sans-font);
 }
+
+footer{
+    font-size:0.9em;
+    color:
+    var(--mid-color);
+    padding:0.4em 1em;
+    text-align:
+    center;
+    /* position:absolute; */
+    width:100%;
+    /* bottom:0; */
+    margin-top:1em;
+}
+
 header.main{
     background-color:
     var(--primary-color);
