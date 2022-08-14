@@ -195,9 +195,9 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
+            console.log(this.path.layout+this.file.url+'.html')
             //file contents
             this.processContents(this.path.layout+this.file.url+'.html').then(html=>{
-                console.log(html)
                 this.contents=html;
 
                 if(this.layout!==''){
