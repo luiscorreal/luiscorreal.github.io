@@ -263,7 +263,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             topics(topics=null,wrap=['<span>','</span>']){
                 if(topics===null)topics=this.file.topics;
-                return "<nav class='topics'>"+topics.map(topic => wrap[0]+topic+wrap[1]).toString()+"</nav>";
+                return "<nav class='topics'><i class='fa-solid fa-hashtag'></i><div>"+topics.map(topic => wrap[0]+topic+wrap[1]).toString()+"</div></nav>";
             },
 
             previewList(list,start=0,count=4){
