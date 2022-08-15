@@ -274,7 +274,6 @@ div.preview-list section{
 
 div.preview-list section:first-child{
     /* flex-grow:1; */
-    width: 100%;
 }
 div.preview-list div.simple-author{
     font-size:0.9em;
