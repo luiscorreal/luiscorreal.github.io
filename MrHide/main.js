@@ -270,11 +270,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
-                if(this.file.image !== undefined && this.file.image !==''){
-                    return `<img class='featured-image' src='${this.path.root}/MrHide/assets/${this.file.image}' >`;
-                }else{
-                    return '';
-                }
+                return `<img class='featured-image' src='${this.path.root}/MrHide/assets/${this.file.image}' >`;
             },
 
             author(item=null){
@@ -316,7 +312,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
                                 ${this.builders.build('author',[item])}
-                                <p>${item.summary.substr(0,164)+'...'}</p>
+                                <p>${item.description.substr(0,164)+'...'}</p>
                             </a>
                         </section>`
                     });
@@ -331,7 +327,7 @@ if(typeof window['MrHide'] !== 'function'){
                     return `<section class='preview-small-item ${layout}-preview-small-item'>
                         <a href='${this.path.root+'/'+layout+'/'+item.url}'>
                             <img src='${this.path.assets+item.image}'>
-                            <div><b>${item.title}</b><p>${item.summary.substr(0,84)+'...'}</p></div>
+                            <div><b>${item.title}</b><p>${item.description.substr(0,84)+'...'}</p></div>
                         </a>
                     </section>`
                 })+
