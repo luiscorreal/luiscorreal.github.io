@@ -301,7 +301,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             previewSmallList(layout,start,count){
                 return "<div class='preview-small-section'>"+this.builders.build('sectionHeading',['Related'])+
-                this.layouts.filter('posts',(item,i)=>{return i>=start && i<start+count},(item,i)=>{
+                this.layouts.filter(layout,(item,i)=>{return i>=start && i<start+count},(item,i)=>{
                     return `<section class='preview-small-item ${layout}-preview-small-item'>
                         <a href='${this.path.root+'/'+layout+'/'+item.url}'>
                             <img src='${this.path.assets+item.image}'>
