@@ -194,11 +194,11 @@ if(typeof window['MrHide'] !== 'function'){
 
 
                         //open specfic layout sources check if file exists
-                        this.layouts.add(this\.file.layout,this.path.layout+'list.json').then(pages=>{
-                            if (this.file.url==='index' && this\.file.layout==='pages'){//index
+                        this.layouts.add(this.file.layout,this.path.layout+'list.json').then(pages=>{
+                            if (this.file.url==='index' && this.file.layout==='pages'){//index
                                 this.file.setFields({url:'index',title:this.user.name});
                             }else{
-                                var li=this.layouts[this\.file.layout].find(x => x.url === this.file.url);
+                                var li=this.layouts[this.file.layout].find(x => x.url === this.file.url);
 
                                 if (li===undefined){//check if ressource does not exists
                                     this.file.setFields({url:'404',title:'404',layout:'pages'});
