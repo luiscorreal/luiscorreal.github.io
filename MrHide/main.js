@@ -106,7 +106,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
             filter(layout,filter,action){
                 var ret='';
-                this.[layout].forEach((item, i) => {
+                this[layout].forEach((item, i) => {
                     if(filter(item,i))ret+=action(item,i);
                 });
                 return ret;
