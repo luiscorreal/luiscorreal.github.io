@@ -103,6 +103,16 @@ if(typeof window['MrHide'] !== 'function'){
                         return json;
                     });
                 }
+            },
+            filter(layout,filter,action){
+                var ret='';
+                this.[layout].forEach((item, i) => {
+                    if(filter(item,i))ret+=action(item,i);
+                });
+                return ret;
+                /*filter(page,item=>item.categories.includes(this.file.categories[0]),item=>{
+
+                })*/
             }
         };
 
@@ -118,6 +128,7 @@ if(typeof window['MrHide'] !== 'function'){
                         case 'layout':return mrh+MrHide.layout+'/';break;
                         case 'theme':return mrh+'themes/'+MrHide.settings.theme+'/';break;
                         case 'file':return mrh+MrHide.layout+'/'+MrHide.file.url+'.html';break;
+                        case 'assets':return mrh+'assets/';break;
                         default:''
                     }
                 }
@@ -275,7 +286,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.path.root+'/'+list+'/'+item.url}'>
-                                <img src='${this.path.root+'/MrHide/assets/'+item.image}'>
+                                <img src='${this.path.assets+item.image}'>
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
                                 ${this.builders.build('author',[item])}
@@ -286,6 +297,15 @@ if(typeof window['MrHide'] !== 'function'){
                     document.querySelector('div.'+list+'-preview-list').innerHTML=ret;
                 })
                 return '<div class="preview-list '+list+'-preview-list"></div>';
+            },
+
+            previewSmallList(layout,start,count){
+                this.layouts.filter('posts',(item,i)=>{return i>=start && i<start+count},(item,i)=>{
+                    return `<section class='preview-small-item ${layout}-preview-small-item'>
+                        <img src='${this.path.assets+item.image}'>
+                        <h3>${item.title}</h3>
+                    </section>`
+                })
             },
 
             sectionHeading(text,url=''){

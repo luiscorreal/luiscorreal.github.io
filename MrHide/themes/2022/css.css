@@ -10,6 +10,7 @@
     --primary-dark: #13191c;
 
     --accent-color:#da3500;
+    --secondary-color: #2196f3;
 
     --light-color:#f4f4f4;
     --lightest-color:white;
@@ -171,6 +172,30 @@ article a{
     text-decoration:
     none;
 }article a:hover{text-decoration:underline;}
+
+
+
+nav.topics{
+    display:flex;
+    font-size: 0.9em;
+    align-items: center;
+    margin: 1em auto;
+    max-width:80%;
+}
+nav.topics>i{
+    padding-right: 0.4em;
+    font-size: 2em;
+    color: var(--primary-dark);
+}
+nav.topics>div{
+    text-align:justify;
+}
+nav.topics>div>*{
+    display:inline-block;
+    color:var(--secondary-color);
+}
+
+
 
 
 
