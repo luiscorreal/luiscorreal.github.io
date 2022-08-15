@@ -192,17 +192,16 @@ if(typeof window['MrHide'] !== 'function'){
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.layout,this.path.layout+'list.json').then(pages=>{
                             if (this.file==='index' && this.layout==='pages'){//index
-                                this.file=new Page({url:'index',title:this.user.name});
+                                this.file=new MrHide.Page({url:'index',title:this.user.name});
                             }else{
                                 var li=this.layouts[this.layout].find(x => x.url === this.file);
 
                                 if (li===undefined){//check if ressource does not exists
-                                    this.file=new Page({url:'404',title:'404'});
+                                    this.file=new MrHide.Page({url:'404',title:'404'});
                                     this.layout='pages';
                                 }else{
-                                    this.file=new Page(li);
+                                    this.file=new MrHide.Page(li);
                                 }
-
                             }
 
                             //theme logic js
