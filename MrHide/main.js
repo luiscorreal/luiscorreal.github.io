@@ -305,7 +305,7 @@ if(typeof window['MrHide'] !== 'function'){
                     items.forEach((item,i) => {
                         if(i<start)return;
                         if(i>start+count)return;
-
+                        console.log(item)
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.path.root+'/'+list+'/'+item.url}'>
                                 <img src='${this.path.assets+item.image}'>
