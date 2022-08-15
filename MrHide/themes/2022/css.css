@@ -271,12 +271,15 @@ div.preview-list section{
 }
 
 div.preview-list section:last-child{
-    /* flex-grow:1; */
+    flex-grow:1;
 }
-
+div.preview-list div.simple-author{
+    font-size:0.9em;
+}
 div.preview-list section a{
     text-decoration:none;
     color:unset;
+    display:block;
 }
 div.preview-list section img{
     width:100%;
