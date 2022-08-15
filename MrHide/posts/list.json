@@ -7,7 +7,7 @@
         "date":"2017-04-13",
         "author":"",
         "image":"featured/creator.png",
-        "summary":"Aunque para algunos es un poco tarde, los medios digitales enfocados en audiencias de consumidores de contenido(redes sociales, plataformas de microblogging, etc)"
+        "description":"Aunque para algunos es un poco tarde, los medios digitales enfocados en audiencias de consumidores de contenido(redes sociales, plataformas de microblogging, etc)"
     },
     {
         "title":"SVG Viewer Extension for Windows Explorer",
@@ -17,7 +17,7 @@
         "date":"2017-11-17",
         "author":"",
         "image":"featured/SVGViewerExtension.png",
-        "summary":"El el mundo del diseño, la previsualización de los diferentes formatos gráficos dentro de las carpetas de un sistema operativo es esencial en nuestra experiencia como usuarios; abrir una carpeta en la cual tienes centenares o miles de imágenes de formatos de edición y tan solo poder ver su nombre anexado a un icono blanco hace parte del desgaste al cual se han acostumbrado muchos diseñadores."
+        "description":"El el mundo del diseño, la previsualización de los diferentes formatos gráficos dentro de las carpetas de un sistema operativo es esencial en nuestra experiencia como usuarios; abrir una carpeta en la cual tienes centenares o miles de imágenes de formatos de edición y tan solo poder ver su nombre anexado a un icono blanco hace parte del desgaste al cual se han acostumbrado muchos diseñadores."
     },
     {
         "title":"Complemento de chat para clientes de la plataforma Messenger",
@@ -27,7 +27,7 @@
         "date":"2017-12-8",
         "author":"",
         "image":"featured/Messenger Platform.png",
-        "summary":"El pasado 30 de noviembre Facebook puso en fase beta pública el nuevo complemento de chat de clientes de su  plataforma de mensajería Messenger para sitios web; el cual le permite a cualquier sitio web instalar de forma sencilla un sistema de comunicaciones con sus clientes siendo compatible con capacidades como pagos, Programación neurolingüística, y cualquier otro medio interactivo soportado actualmente en dicha plataforma."
+        "description":"El pasado 30 de noviembre Facebook puso en fase beta pública el nuevo complemento de chat de clientes de su  plataforma de mensajería Messenger para sitios web; el cual le permite a cualquier sitio web instalar de forma sencilla un sistema de comunicaciones con sus clientes siendo compatible con capacidades como pagos, Programación neurolingüística, y cualquier otro medio interactivo soportado actualmente en dicha plataforma."
     },
     {
         "title":"Sound Collection - Facebook enfila baterías contra Youtube",
@@ -37,6 +37,6 @@
         "date":"2017-12-10",
         "author":"",
         "image":"featured/facebook-sound-collection.png",
-        "summary":"Los más de 2000 millones de usuarios potenciales de Facebook parecen volverse una gran tentación para youtubers y creadores de contenido digital debido a la gran apuesta que la plataforma de Mark Zuckerberg está haciendo para atraerlos en base a el desarrollo de herramientas que facilitan la monetización y el desarrollo de contenidos."
+        "description":"Los más de 2000 millones de usuarios potenciales de Facebook parecen volverse una gran tentación para youtubers y creadores de contenido digital debido a la gran apuesta que la plataforma de Mark Zuckerberg está haciendo para atraerlos en base a el desarrollo de herramientas que facilitan la monetización y el desarrollo de contenidos."
     }
 ]
