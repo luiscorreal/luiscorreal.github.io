@@ -129,14 +129,13 @@ header.main a.logo-home>*{
 header.main nav a{
     opacity:0.7;
 }
-header.main nav a:hover{
+header.main nav a:hover,header.main nav a.current{
     text-decoration: underline;
     opacity:1;
-}
-header.main nav a.current{
-    font-weight:
-    bold;
-    opacity:1;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--accent-color);
+    text-underline-position: under;
+    text-decoration-skip-ink: none;
 }
 
 main h1{
