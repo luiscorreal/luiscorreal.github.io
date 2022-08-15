@@ -77,8 +77,35 @@ if(typeof window['MinGHAPI'] !== 'function'){//Minimalist GitHub API
 
 if(typeof window['MrHide'] !== 'function'){
     window.MrHide = class  {
+        static Page=class{
+        	get date(){
+        		if(this._date===''){
+        			var t = new Date();
+        			return t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate();
+        		}
+        		return this._date;
+        	}
+        	set date(v){this._date=v;}
+
+        	get author(){if(this._author==='')return MrHide.user.login;}
+        	set author(v){this._author=v;}
+
+        	constructor(obj){
+        		this.title="";
+        		this.url="#";
+        		this.categories=[];
+        		this.topics=[];
+        		this._date="";
+        		this._author='';
+        		this.image="";
+        		this.description="";
+        		this.data={};
+
+        		Object.assign(this, obj)
+        	}
+        }
+
         static user;
-        //static type;//the layout file
         static file;
         static path;//proxy to resolve all paths
         static contents='';
@@ -161,19 +188,19 @@ if(typeof window['MrHide'] !== 'function'){
                             showErrors:false
                         },data);
 
-
+//-------------------------------------------------------------------------------------------------------------------------
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.layout,this.path.layout+'list.json').then(pages=>{
                             if (this.file==='index' && this.layout==='pages'){//index
-                                this.file={url:'index',title:this.user.name};
+                                this.file=new Page({url:'index',title:this.user.name});
                             }else{
                                 var li=this.layouts[this.layout].find(x => x.url === this.file);
 
                                 if (li===undefined){//check if ressource does not exists
-                                    this.file={url:'404',title:'404'};
+                                    this.file=new Page({url:'404',title:'404'});
                                     this.layout='pages';
                                 }else{
-                                    this.file=li;
+                                    this.file=new Page(li);
                                 }
 
                             }
