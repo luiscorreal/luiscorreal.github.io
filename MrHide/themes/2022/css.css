@@ -268,10 +268,13 @@ div.preview-list section{
     background-color:
     var(--lightest-color);
     overflow: hidden;
+    border-radius: 0.5em;
+    flex-grow: 1;
 }
 
-div.preview-list section:last-child{
-    flex-grow:1;
+div.preview-list section:first-child{
+    /* flex-grow:1; */
+    width: 100%;
 }
 div.preview-list div.simple-author{
     font-size:0.9em;
@@ -282,9 +285,10 @@ div.preview-list section a{
     display:block;
 }
 div.preview-list section img{
-    width:100%;
+    width: calc(100% + 2em);
     object-fit: cover;
     height: 50%;
+    margin: -1em -1em 0 -1em;
 }
 div.preview-list section b{
     /* font-size: 0.7em; */
