@@ -90,6 +90,9 @@ if(typeof window['MrHide'] !== 'function'){
         	get author(){if(this._author==='')return MrHide.user.login;}
         	set author(v){this._author=v;}
 
+            get layout(){if(this._layout==='')return 'pages';}
+        	set layout(v){this._layout=v;}
+
         	constructor(obj){
         		this.title="";
         		this.url="#";
@@ -99,10 +102,15 @@ if(typeof window['MrHide'] !== 'function'){
         		this._author='';
         		this.image="";
         		this.description="";
+                this._layout="pages";
         		this.data={};
 
-        		Object.assign(this, obj)
+        		this.setFields(obj)
         	}
+
+            setFields(obj){
+                Object.assign(this, obj)
+            }
         }
 
         static user;
@@ -110,7 +118,6 @@ if(typeof window['MrHide'] !== 'function'){
         static path;//proxy to resolve all paths
         static contents='';
         static settings;
-        static layout;
         static layouts={
             add(name,url,sort=true){
                 if(name===''){
@@ -152,9 +159,9 @@ if(typeof window['MrHide'] !== 'function'){
                         case 'root':return root;
                         case 'settings':return mrh+'settings.json';break;
                         case 'pages':return mrh+'pages/';break;
-                        case 'layout':return mrh+MrHide.layout+'/';break;
+                        case 'layout':return mrh+MrHide.file.layout+'/';break;
                         case 'theme':return mrh+'themes/'+MrHide.settings.theme+'/';break;
-                        case 'file':return mrh+MrHide.layout+'/'+MrHide.file.url+'.html';break;
+                        case 'file':return mrh+MrHide.file.layout+'/'+MrHide.file.url+'.html';break;
                         case 'assets':return mrh+'assets/';break;
                         default:''
                     }
@@ -165,17 +172,14 @@ if(typeof window['MrHide'] !== 'function'){
                 this.user=user;
 
                 var slashsplit=window.location.pathname.split('/');
-                this.layout=slashsplit[1];
-                this.file=slashsplit[2];
+                this.file=new MrHide.Page({url:slashsplit[2],layout:slashsplit[1]})
 
                 if(slashsplit.length===2){//is page
-                    this.file=this.layout;
-                    this.layout='pages';
+                    this.file.setFields({url:this.file.layout,layout:'pages'})
                 }
 
-                if(this.file===''){//is index page
-                    this.file='index';
-                    this.layout='pages'
+                if(this.file.url===''){//is index page
+                    this.file.setFields({url:'index',layout:'pages'})
                 }
 
                 //list of public pages
@@ -188,19 +192,18 @@ if(typeof window['MrHide'] !== 'function'){
                             showErrors:false
                         },data);
 
-//-------------------------------------------------------------------------------------------------------------------------
+
                         //open specfic layout sources check if file exists
-                        this.layouts.add(this.layout,this.path.layout+'list.json').then(pages=>{
-                            if (this.file==='index' && this.layout==='pages'){//index
-                                this.file=new MrHide.Page({url:'index',title:this.user.name});
+                        this.layouts.add(this\.file.layout,this.path.layout+'list.json').then(pages=>{
+                            if (this.file.url==='index' && this\.file.layout==='pages'){//index
+                                this.file.setFields({url:'index',title:this.user.name});
                             }else{
-                                var li=this.layouts[this.layout].find(x => x.url === this.file);
+                                var li=this.layouts[this\.file.layout].find(x => x.url === this.file.url);
 
                                 if (li===undefined){//check if ressource does not exists
-                                    this.file=new MrHide.Page({url:'404',title:'404'});
-                                    this.layout='pages';
+                                    this.file.setFields({url:'404',title:'404',layout:'pages'});
                                 }else{
-                                    this.file=new MrHide.Page(li);
+                                    this.file.setFields(li);
                                 }
                             }
 
@@ -236,9 +239,9 @@ if(typeof window['MrHide'] !== 'function'){
             this.processContents(this.path.file).then(html=>{
                 this.contents=html;
 
-                if(this.layout!==''){
+                if(this.file.layout!==''){
                     //layout
-                    this.processContents(this.path.theme+'layouts/'+this.layout+'.html').then(contents=>{
+                    this.processContents(this.path.theme+'layouts/'+this.file.layout+'.html').then(contents=>{
                         document.body.innerHTML=contents;
                     })
                 }else{
@@ -258,7 +261,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             layout(l){
-                this.layout=l;
+                this.file.layout=l;
                 return '';
             },
 
