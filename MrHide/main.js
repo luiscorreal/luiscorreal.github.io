@@ -300,7 +300,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             previewSmallList(layout,start,count){
-                this.layouts.filter('posts',(item,i)=>{return i>=start && i<start+count},(item,i)=>{
+                return this.layouts.filter('posts',(item,i)=>{return i>=start && i<start+count},(item,i)=>{
                     return `<section class='preview-small-item ${layout}-preview-small-item'>
                         <img src='${this.path.assets+item.image}'>
                         <h3>${item.title}</h3>
