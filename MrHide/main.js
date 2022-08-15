@@ -253,7 +253,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             author(item=null){
                 if(item===null)item=this.file;
-                return `<div>By <b class='author'>${item.author===''?this.user.login:item.author}</b> - ${item.date}</div>`;
+                return `<div class='simple-author'>By <b class='author'>${item.author===''?this.user.login:item.author}</b> - ${item.date}</div>`;
             },
 
             title(){
