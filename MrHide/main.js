@@ -300,12 +300,16 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             previewSmallList(layout,start,count){
-                return this.layouts.filter('posts',(item,i)=>{return i>=start && i<start+count},(item,i)=>{
+                return "<div class='preview-small-section'>"+
+                this.layouts.filter('posts',(item,i)=>{return i>=start && i<start+count},(item,i)=>{
                     return `<section class='preview-small-item ${layout}-preview-small-item'>
-                        <img src='${this.path.assets+item.image}'>
-                        <h3>${item.title}</h3>
+                        <a href='${this.path.root+'/'+layout+'/'+item.url}'>
+                            <img src='${this.path.assets+item.image}'>
+                            <div><b>${item.title}</b><p>${item.summary.substr(0,84)+'...'}</p></div>
+                        </a>
                     </section>`
-                })
+                })+
+                "</div>";
             },
 
             sectionHeading(text,url=''){
