@@ -281,7 +281,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
                                 ${this.builders.build('author',[item])}
-                                <p>${item.summary.substr(0,128)+'...'}</p>
+                                <p>${item.summary.substr(0,164)+'...'}</p>
                             </a>
                         </section>`
                     });

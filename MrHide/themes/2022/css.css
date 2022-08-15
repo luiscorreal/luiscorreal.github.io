@@ -260,17 +260,18 @@ div.preview-list section img{
     height: 50%;
 }
 div.preview-list section b{
-    font-size: 0.7em;
-    opacity:0.7;
+    /* font-size: 0.7em; */
+    /* opacity:0.7; */
 }
 div.preview-list section h3,div.preview-list section p{
     margin:0.1em 0;
 }
 div.preview-list section p{
-    text-align:
-    justify;
+    text-align:justify;
     font-size:0.9em;
-
+    border-top: 1px solid var(--light-color);
+    margin-top:0.5em;
+    padding-top:0.5em;
 }
 
 
