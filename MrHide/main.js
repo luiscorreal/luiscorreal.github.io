@@ -242,13 +242,6 @@ if(typeof window['MrHide'] !== 'function'){
 
             author(item=null){
                 if(item===null)item=this.file;
-
-                /*if(this.file.author !== undefined){
-                    if(this.file.author === '')this.file.author=this.user.login;
-                    return `<div>By <b class='author'>${this.file.author}</b> - ${this.file.date}</div>`;
-                }else{
-                    return '';
-                }*/
                 return `<div>By <b class='author'>${item.author===''?this.user.login:item.author}</b> - ${item.date}</div>`;
             },
 
@@ -266,6 +259,11 @@ if(typeof window['MrHide'] !== 'function'){
 
             categories(cats,wrap=['<span>','</span>']){
                 return "<nav class='categories'>"+cats.map(cat => wrap[0]+cat+wrap[1]).toString()+"</nav>";
+            },
+
+            topics(topics=null,wrap=['<span>','</span>']){
+                if(topics===null)topics=this.file.topics;
+                return "<nav class='topics'>"+topics.map(topic => wrap[0]+topic+wrap[1]).toString()+"</nav>";
             },
 
             previewList(list,start=0,count=4){

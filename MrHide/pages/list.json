@@ -3,7 +3,7 @@
         "title":"License",
         "url":"license",
         "categories":[],
-        "tags":[],
+        "topics":[],
         "date":"2022-04-12",
         "author":"",
         "image":""
@@ -12,7 +12,7 @@
         "title":"About",
         "url":"about",
         "categories":["Main pages","People"],
-        "tags":[],
+        "topics":[],
         "date":"2022-04-12",
         "author":"",
         "image":"about-us.png"
