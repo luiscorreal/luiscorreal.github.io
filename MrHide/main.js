@@ -249,7 +249,7 @@ if(typeof window['MrHide'] !== 'function'){
                 }else{
                     return '';
                 }*/
-                return `<div>By <b class='author'>${item.author || ''}</b> - ${item.date || ''}</div>`;
+                return `<div>By <b class='author'>${item.author===''?this.user.login:item.author}</b> - ${item.date}</div>`;
             },
 
             title(){
