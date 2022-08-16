@@ -93,6 +93,9 @@ if(typeof window['MrHide'] !== 'function'){
             get layout(){if(this._layout==='')return 'pages';}
         	set layout(v){this._layout=v;}
 
+            get lll(){if(this._layout==='')return 'pages';}
+
+
         	constructor(obj){
         		this.title="";
         		this.url="#";
@@ -182,7 +185,7 @@ if(typeof window['MrHide'] !== 'function'){
                 if(this.file.url===''){//is index page
                     this.file.setFields({url:'index',layout:'pages'})
                 }
-                console.log(MrHide.file._layout)
+                console.log(MrHide.file.lll)
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
