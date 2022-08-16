@@ -184,21 +184,14 @@ if(typeof window['MrHide'] !== 'function'){
                 var tp={}
 
                 if(pn.length===0){//if is index page
-                    tp={url:'index',layout:'pages'}
+                    tp={url:'index',layout:'pages',title:this.user.name}
                 }else if(this.registeredLayouts.includes(pn[0])){//if is layout
                     tp={url:pn.join('/'),layout:pn[0]}
                 }else{//is page and the entire pn is the url
                     tp={url:pn.join('/'),layout:'pages'}
                 }
 
-            trace(tp)
-
                 this.file=new MrHide.Page(tp)
-
-
-
-
-
 
 
                 //list of public pages
@@ -211,13 +204,14 @@ if(typeof window['MrHide'] !== 'function'){
                             showErrors:false
                         },data);
 
+                        trace(this.path.layout+'list.json')
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.file.layout,this.path.layout+'list.json').then(pages=>{
                             if (this.file.url==='index' && this.file.layout==='pages'){//index
-                                this.file.setFields({url:'index',title:this.user.name});
+                                var t=''
                             }else{
                                 var li=this.layouts[this.file.layout].find(x => x.url === this.file.url);
-
+                                trace(li)
                                 if (li===undefined){//check if ressource does not exists
                                     this.file.setFields({url:'404',title:'404',layout:'pages'});
                                 }else{
