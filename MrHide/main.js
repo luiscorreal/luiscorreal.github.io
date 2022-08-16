@@ -286,7 +286,7 @@ if(typeof window['MrHide'] !== 'function'){
                     return `<img id=${id} class='${cl}' src='${this.path.assets}${url}' onerror="this.onerror=null; this.src='${url}'">`;
                 }
                 return `<img id=${id} class='${cl}' src='${this.path.assets}${url}' >`;
-            }
+            },
 
             date(field){
                 var d=new Date();
