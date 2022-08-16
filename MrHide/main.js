@@ -110,7 +110,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             setFields(obj){
                 Object.assign(this, obj)
-                console.log(MrHide.url)
+                console.log(MrHide.file)
             }
         }
 
