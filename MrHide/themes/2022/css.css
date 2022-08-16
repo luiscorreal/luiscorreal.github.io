@@ -135,6 +135,7 @@ aside.sidebar{
     absolute;
     margin: 1em 0 0 -1em;
     opacity:0.3;
+    max-height: 27em;
 }
 
 
