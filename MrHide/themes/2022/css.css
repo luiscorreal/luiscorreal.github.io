@@ -193,8 +193,8 @@ article{
 article a{
     color:
     var(--accent-color);
-    text-decoration:
-    none;
+    text-decoration:none;
+    word-break: break-all;
 }article a:hover{text-decoration:underline;}
 
 
