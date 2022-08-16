@@ -1,8 +1,8 @@
 const DEBUG=true;
 
 if(typeof window['trace'] !== 'function'){
-    window.trace=m=>{
-        if(DEBUG!==undefined && DEBUG)console.trace(m);
+    window.trace=()=>{
+        if(DEBUG!==undefined && DEBUG)console.trace(arguments);
     }
 }
 
@@ -211,7 +211,8 @@ if(typeof window['MrHide'] !== 'function'){
                                 var t=''
                             }else{
                                 var li=this.layouts[this.file.layout].find(x => x.url === this.file.url);
-                                trace(li)
+                                trace(this.file.url,this.file.layout)
+
                                 if (li===undefined){//check if ressource does not exists
                                     this.file.setFields({url:'404',title:'404',layout:'pages'});
                                 }else{
