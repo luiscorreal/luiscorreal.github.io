@@ -109,7 +109,7 @@ if(typeof window['MrHide'] !== 'function'){
 
         	constructor(obj){
         		this.title="";
-        		this.url="#";
+        		this.url="";
         		this.categories=[];
         		this.topics=[];
         		this._date="";
