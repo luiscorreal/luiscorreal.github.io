@@ -1,3 +1,7 @@
+if(typeof window['log'] !== 'function'){
+    window.log=m=>console.log(m);
+}
+
 if(typeof window['MinGHAPI'] !== 'function'){//Minimalist GitHub API
     window.MinGHAPI = class{
         static API='https://api.github.com';
@@ -187,6 +191,7 @@ if(typeof window['MrHide'] !== 'function'){
                 if(this.file.url===''){//is index page
                     this.file.setFields({url:'index',layout:'pages'})
                 }
+                log(this.file)
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
@@ -240,7 +245,6 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
-            console.log(this.file)
             //file contents
             this.processContents(this.path.file).then(html=>{
                 this.contents=html;
