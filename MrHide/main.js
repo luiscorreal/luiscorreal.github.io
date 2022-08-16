@@ -1,5 +1,5 @@
 if(typeof window['log'] !== 'function'){
-    window.log=m=>console.log(m);
+    window.log=m=>console.log(m,' <from>: ',console.trace());
 }
 
 if(typeof window['MinGHAPI'] !== 'function'){//Minimalist GitHub API
