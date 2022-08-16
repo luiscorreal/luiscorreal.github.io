@@ -187,15 +187,15 @@ if(typeof window['MrHide'] !== 'function'){
 
                 var slashsplit=window.location.pathname.split('/');
                 this.file=new MrHide.Page({url:slashsplit[2],layout:slashsplit[1]})
-                trace(this.file)
+                trace(this.file.toString())
                 if(slashsplit.length===2){//is page
                     this.file.setFields({url:this.file.layout,layout:'pages'})
                 }
-                trace(this.file)
+                trace(this.file.toString())
                 if(this.file.url===''){//is index page
                     this.file.setFields({url:'index',layout:'pages'})
                 }
-                trace(this.file)
+                trace(this.file.toString())
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
