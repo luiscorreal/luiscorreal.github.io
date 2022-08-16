@@ -89,15 +89,16 @@ img.featured-image{
 div.main-container{
     max-width:32cm;
     margin:0 auto;
-    padding: 0 1em;
+    padding: 0;
+}
+
+div.main-container.with-sidebar{
+    display: flex;
+    box-shadow: var(--top-box-shadow);
 }
 
 main.page,main.post{
-    max-width:20cm;
     padding:1em;
-    margin:0 auto;
-    box-shadow:
-    var(--top-box-shadow);
     background-color:
     var(--lightest-color);
 }
@@ -116,6 +117,27 @@ nav.main{
         color: var(--light-color);
 
     }
+
+aside.sidebar{
+    width: 30em;
+    padding: 4em 1em 0 1em;
+    background-color: var(--lightest-color);
+    text-align:
+    right;
+}main.page:before{
+    content:'|';
+    color:transparent;
+    display:block;
+    background: linear-gradient(190deg, transparent 0%, var(--mid-color) 10%, var(--mid-color) 58%, transparent 100%);
+    width:1px;
+    height: 65vh;
+    position:
+    absolute;
+    margin: 1em 0 0 -1em;
+    opacity:0.3;
+}
+
+
 header.main a.logo-home{
     padding:0.5em;
 }
