@@ -93,7 +93,7 @@ if(typeof window['MrHide'] !== 'function'){
             get layout(){if(this._layout==='')return 'pages';}
         	set layout(v){this._layout=v;}
 
-            get lll(){return 'pages';}
+            get lll(){console.log(this);return 'pages';}
 
 
         	constructor(obj){
