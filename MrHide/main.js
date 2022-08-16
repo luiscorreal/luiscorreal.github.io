@@ -101,6 +101,8 @@ if(typeof window['MrHide'] !== 'function'){
             }
         	set author(v){this._author=v;}
 
+            get isFromPage(){return (this.url==='index' && this.layout==='pages')}
+
         	constructor(obj){
         		this.title="";
         		this.url="";
@@ -153,7 +155,7 @@ if(typeof window['MrHide'] !== 'function'){
                     if(filter(item,i))ret+=action(item,i);
                 });
                 return ret;
-                /*filter(page,item=>item.categories.includes(this.file.categories[0]),item=>{
+                /*filter(page,item=>item.categories.includes(this.page.categories[0]),item=>{
 
                 })*/
             }
@@ -168,9 +170,9 @@ if(typeof window['MrHide'] !== 'function'){
                         case 'root':return root;
                         case 'settings':return mrh+'settings.json';break;
                         case 'pages':return mrh+'pages/';break;
-                        case 'layout':return mrh+MrHide.file.layout+'/';break;
+                        case 'layout':return mrh+MrHide.page.layout+'/';break;
                         case 'theme':return mrh+'themes/'+MrHide.settings.theme+'/';break;
-                        case 'file':return mrh+MrHide.file.layout+'/'+MrHide.file.url+'.html';break;
+                        case 'file':return mrh+MrHide.page.layout+'/'+MrHide.page.url+'.html';break;
                         case 'assets':return mrh+'assets/';break;
                         default:''
                     }
@@ -192,7 +194,7 @@ if(typeof window['MrHide'] !== 'function'){
                     tp={url:pn.join('/'),layout:'pages'}
                 }
 
-                this.file=new MrHide.Page(tp)
+                this.page=new MrHide.Page(tp)
 
 
                 //list of public pages
@@ -205,19 +207,15 @@ if(typeof window['MrHide'] !== 'function'){
                             showErrors:false
                         },data);
 
-                        trace(this.path.layout+'list.json')
                         //open specfic layout sources check if file exists
-                        this.layouts.add(this.file.layout,this.path.layout+'list.json').then(pages=>{
-                            if (this.file.url==='index' && this.file.layout==='pages'){//index
-                                var t=''
-                            }else{
-                                var li=this.layouts[this.file.layout].find(x => x.url === this.file.url);
-                                trace(this.file.url,this.layouts[this.file.layout])
+                        this.layouts.add(this.page.layout,this.path.layout+'list.json').then(pages=>{
+                            if (!this.page.isFromPage){
+                                var li=this.layouts[this.page.layout].find(x => x.url === this.page.url);
 
                                 if (li===undefined){//check if ressource does not exists
-                                    this.file.setFields({url:'404',title:'404',layout:'pages'});
+                                    this.page.setFields({url:'404',title:'404',layout:'pages'});
                                 }else{
-                                    this.file.setFields(li);
+                                    this.page.setFields(li);
                                 }
                             }
 
@@ -249,13 +247,14 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
+            document.title=this.page.title;
             //file contents
             this.processContents(this.path.file).then(html=>{
                 this.contents=html;
 
-                if(this.file.layout!==''){
+                if(this.page.layout!==''){
                     //layout
-                    this.processContents(this.path.theme+'layouts/'+this.file.layout+'.html').then(contents=>{
+                    this.processContents(this.path.theme+'layouts/'+this.page.layout+'.html').then(contents=>{
                         document.body.innerHTML=contents;
                     })
                 }else{
@@ -275,7 +274,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             layout(l){
-                this.file.layout=l;
+                this.page.layout=l;
                 return '';
             },
 
@@ -287,17 +286,17 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
-                if(this.file.image==='')return '';
-                return `<img class='featured-image' src='${this.path.root}/MrHide/assets/${this.file.image}' >`;
+                if(this.page.image==='')return '';
+                return `<img class='featured-image' src='${this.path.root}/MrHide/assets/${this.page.image}' >`;
             },
 
             author(item=null){
-                if(item===null)item=this.file;
+                if(item===null)item=this.page;
                 return `<div class='simple-author'>By <b class='author'>${item.author===''?this.user.login:item.author}</b> - ${item.date}</div>`;
             },
 
             title(){
-                return `<h1>${this.file.title}</h1>`;
+                return `<h1>${this.page.title}</h1>`;
             },
 
             contents(){
@@ -313,7 +312,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             topics(topics=null,wrap=['<span>','</span>']){
-                if(topics===null)topics=this.file.topics;
+                if(topics===null)topics=this.page.topics;
                 return "<nav class='topics'><i class='fa-solid fa-hashtag'></i><div>"+topics.map(topic => wrap[0]+topic+wrap[1]).toString()+"</div></nav>";
             },
 

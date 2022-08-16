@@ -3,7 +3,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
         var ret='<nav class="main">',current;
 
         this.layouts['pages'].forEach((item, i) => {
-            current=(item.url==this.file.url)?'class="current" ':''
+            current=(item.url==this.page.url)?'class="current" ':''
             ret+=`<a ${current} href='${this.path.root+'/'+item.url}'>${item.title}</a>`;
         });
 
@@ -41,7 +41,7 @@ MrHide.builders=Object.assign(MrHide.builders,{
 
     articleHeader(type){
         return `<header class='article-header'>
-            ${this.builders.build('categories',[this.file.categories])}
+            ${this.builders.build('categories',[this.page.categories])}
             ${this.builders.build('title')}
             ${this.builders.build('author')}
         </header>`;
