@@ -240,6 +240,7 @@ if(typeof window['MrHide'] !== 'function'){
         }
 
         static process(){
+            console.log(this.file)
             //file contents
             this.processContents(this.path.file).then(html=>{
                 this.contents=html;
