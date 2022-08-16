@@ -84,18 +84,18 @@ header.main{
 
 img.featured-image{
     width:100%;
+    border: 1px solid var(--light-color);
 }
 
 div.main-container{
     max-width:32cm;
     margin:0 auto;
-    padding: 1em 2em;
+    padding: 0;
 }
 
 div.main-container.with-sidebar{
     display: flex;
     box-shadow: var(--top-box-shadow);
-    padding:0;
 }
 
 main.page,main.post{
@@ -120,11 +120,12 @@ nav.main{
     }
 
 aside.sidebar{
-    width: 30em;
-    padding: 4em 1em 0 1em;
+    /* width: 30em; */
+    padding: 3em 1em 0 1em;
     background-color: var(--lightest-color);
     text-align:
     right;
+    min-width: 13em;
 }main.page:before{
     content:'|';
     color:transparent;
@@ -371,6 +372,12 @@ div.preview-small-section>section p{
 @media (max-width:1025px){
     div.preview-list section{
         width: calc(50% - 1em);
+    }
+
+    aside.sidebar{
+        display:none;
+    }main.page:before{
+        display:none;
     }
 }
 
