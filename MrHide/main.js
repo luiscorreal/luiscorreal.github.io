@@ -101,12 +101,6 @@ if(typeof window['MrHide'] !== 'function'){
             }
         	set author(v){this._author=v;}
 
-            get layout(){if(
-                this._layout==='')return 'pages';
-                return this._layout;
-            }
-        	set layout(v){this._layout=v;}
-
         	constructor(obj){
         		this.title="";
         		this.url="";
@@ -116,15 +110,15 @@ if(typeof window['MrHide'] !== 'function'){
         		this._author='';
         		this.image="";
         		this.description="";
-                this._layout="pages";
+                this.layout="pages";
         		this.data={};
 
         		this.setFields(obj)
         	}
 
-            setFields(obj){
+            /*setFields(obj){
                 Object.assign(this, obj)
-            }
+            }*/
         }
 
         static user;
@@ -297,6 +291,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             featuredImage(){
+                if(this.file.image==='')return '';
                 return `<img class='featured-image' src='${this.path.root}/MrHide/assets/${this.file.image}' >`;
             },
 
