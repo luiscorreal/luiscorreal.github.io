@@ -186,7 +186,8 @@ if(typeof window['MrHide'] !== 'function'){
                 if(pn.length===0){//if is index page
                     tp={url:'index',layout:'pages',title:this.user.name}
                 }else if(this.registeredLayouts.includes(pn[0])){//if is layout
-                    tp={url:pn.join('/'),layout:pn[0]}
+                    var l=pn.shift()
+                    tp={url:pn.join('/'),layout:l}
                 }else{//is page and the entire pn is the url
                     tp={url:pn.join('/'),layout:'pages'}
                 }
