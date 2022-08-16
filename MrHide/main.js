@@ -1,5 +1,9 @@
-if(typeof window['log'] !== 'function'){
-    window.log=m=>console.log(m,' <from>: ',console.trace());
+const DEBUG=true;
+
+if(typeof window['trace'] !== 'function'){
+    window.trace=m=>{
+        if(DEBUG!==undefined && DEBUG)console.trace(m);
+    }
 }
 
 if(typeof window['MinGHAPI'] !== 'function'){//Minimalist GitHub API
@@ -183,15 +187,15 @@ if(typeof window['MrHide'] !== 'function'){
 
                 var slashsplit=window.location.pathname.split('/');
                 this.file=new MrHide.Page({url:slashsplit[2],layout:slashsplit[1]})
-
+                trace(this.file)
                 if(slashsplit.length===2){//is page
                     this.file.setFields({url:this.file.layout,layout:'pages'})
                 }
-
+                trace(this.file)
                 if(this.file.url===''){//is index page
                     this.file.setFields({url:'index',layout:'pages'})
                 }
-                log(this.file)
+                trace(this.file)
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
