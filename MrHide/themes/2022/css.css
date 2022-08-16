@@ -89,12 +89,13 @@ img.featured-image{
 div.main-container{
     max-width:32cm;
     margin:0 auto;
-    padding: 0;
+    padding: 1em 2em;
 }
 
 div.main-container.with-sidebar{
     display: flex;
     box-shadow: var(--top-box-shadow);
+    padding:0;
 }
 
 main.page,main.post{
@@ -124,7 +125,7 @@ aside.sidebar{
     background-color: var(--lightest-color);
     text-align:
     right;
-}main.page:before,main.post:before{
+}main.page:before{
     content:'|';
     color:transparent;
     display:block;
@@ -135,7 +136,6 @@ aside.sidebar{
     absolute;
     margin: 1em 0 0 -1em;
     opacity:0.3;
-    max-height: 27em;
 }
 
 
