@@ -113,7 +113,7 @@ if(typeof window['MrHide'] !== 'function'){
                 this.layout="pages";
         		this.data={};
 
-        		this.setFields(obj)
+        		Object.assign(this, obj)
         	}
 
             /*setFields(obj){
