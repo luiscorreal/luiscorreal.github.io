@@ -110,7 +110,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             setFields(obj){
                 Object.assign(this, obj)
-                console.log(MrHide.file)
+
             }
         }
 
@@ -182,6 +182,7 @@ if(typeof window['MrHide'] !== 'function'){
                 if(this.file.url===''){//is index page
                     this.file.setFields({url:'index',layout:'pages'})
                 }
+                console.log(MrHide.file)
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
