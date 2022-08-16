@@ -211,7 +211,7 @@ if(typeof window['MrHide'] !== 'function'){
                                 var t=''
                             }else{
                                 var li=this.layouts[this.file.layout].find(x => x.url === this.file.url);
-                                trace(this.file.url,this.file.layout)
+                                trace(this.file.url,this.layouts[this.file.layout])
 
                                 if (li===undefined){//check if ressource does not exists
                                     this.file.setFields({url:'404',title:'404',layout:'pages'});
