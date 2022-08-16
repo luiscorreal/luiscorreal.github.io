@@ -190,11 +190,11 @@ if(typeof window['MrHide'] !== 'function'){
                 var tp={}
 
                 if(pn.length===0){//if is index page
-                    tp{url:'index',layout:'pages'}
+                    tp={url:'index',layout:'pages'}
                 }else if(this.registeredLayouts.includes(pn[0])){//if is layout
-                    tp{url:pn.join('/'),layout:pn[0]}
+                    tp={url:pn.join('/'),layout:pn[0]}
                 }else{//is page and the entire pn is the url
-                    tp{url:pn.join('/'),layout:'pages'}
+                    tp={url:pn.join('/'),layout:'pages'}
                 }
 
             trace(tp)
