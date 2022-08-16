@@ -87,14 +87,17 @@ if(typeof window['MrHide'] !== 'function'){
         	}
         	set date(v){this._date=v;}
 
-        	get author(){if(this._author==='')return MrHide.user.login;}
+        	get author(){if(
+                this._author==='')return MrHide.user.login;
+                return this._author;
+            }
         	set author(v){this._author=v;}
 
-            get layout(){if(this._layout==='')return 'pages';}
+            get layout(){if(
+                this._layout==='')return 'pages';
+                return this._layout;
+            }
         	set layout(v){this._layout=v;}
-
-            get lll(){console.log(this);return 'pages';}
-
 
         	constructor(obj){
         		this.title="";
@@ -113,7 +116,6 @@ if(typeof window['MrHide'] !== 'function'){
 
             setFields(obj){
                 Object.assign(this, obj)
-
             }
         }
 
@@ -185,7 +187,6 @@ if(typeof window['MrHide'] !== 'function'){
                 if(this.file.url===''){//is index page
                     this.file.setFields({url:'index',layout:'pages'})
                 }
-                console.log(MrHide.file.lll)
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
