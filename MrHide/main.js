@@ -283,7 +283,7 @@ if(typeof window['MrHide'] !== 'function'){
                     var ri=url.split('.');
                     var ext='.'+ri.pop();
                     ri=this.path.assets+ri.join('.')+'-'+size+ext;
-                    return `<img id=${id} class='${cl}' src='${this.path.assets}${url}' onerror="this.onerror=null; this.src='${url}'">`;
+                    return `<img id=${id} class='${cl}' src='${this.path.assets}${url}' onerror="this.onerror=null; console.log(this.src); this.src='${url}'">`;
                 }
                 return `<img id=${id} class='${cl}' src='${this.path.assets}${url}' >`;
             },
