@@ -124,7 +124,7 @@ aside.sidebar{
     background-color: var(--lightest-color);
     text-align:
     right;
-}main.page:before{
+}main.page:before,main.post:before{
     content:'|';
     color:transparent;
     display:block;
