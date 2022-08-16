@@ -132,6 +132,7 @@ if(typeof window['MrHide'] !== 'function'){
         static path;//proxy to resolve all paths
         static contents='';
         static settings;
+        static registeredLayouts=['posts'];//todo: get those from settings
         static layouts={
             add(name,url,sort=true){
                 if(name===''){
@@ -185,17 +186,26 @@ if(typeof window['MrHide'] !== 'function'){
             MinGHAPI.user(window.location.hostname.split('.')[0]).then(user=>{
                 this.user=user;
 
-                var slashsplit=window.location.pathname.split('/');
-                this.file=new MrHide.Page({url:slashsplit[2] || '',layout:slashsplit[1]})
-            trace({url:this.file.url,layout:this.file.layout})
-                if(slashsplit.length===2){//is page
-                    this.file.setFields({url:this.file.layout,layout:'pages'})
+                var pn=window.location.pathname.split('/').filter(e => {return e !== '';});
+                var tp={}
+
+                if(pn.length===0){//if is index page
+                    tp{url:'index',layout:'pages'}
+                }else if(this.registeredLayouts.includes(pn[0])){//if is layout
+                    tp{url:pn.join('/'),layout:pn[0]}
+                }else{//is page and the entire pn is the url
+                    tp{url:pn.join('/'),layout:'pages'}
                 }
-            trace({url:this.file.url,layout:this.file.layout})
-                if(this.file.url===''){//is index page
-                    this.file.setFields({url:'index',layout:'pages'})
-                }
-            trace({url:this.file.url,layout:this.file.layout})
+
+            trace(tp)
+
+                this.file=new MrHide.Page(tp)
+
+
+
+
+
+
 
                 //list of public pages
                 this.layouts.add('pages',this.path.pages+'list.json').then(pages=>{
