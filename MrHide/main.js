@@ -192,7 +192,7 @@ if(typeof window['MrHide'] !== 'function'){
                             showErrors:false
                         },data);
 
-
+console.log(this.path.layout)
                         //open specfic layout sources check if file exists
                         this.layouts.add(this.file.layout,this.path.layout+'list.json').then(pages=>{
                             if (this.file.url==='index' && this.file.layout==='pages'){//index
