@@ -1,7 +1,7 @@
 const DEBUG=true;
 
 if(typeof window['trace'] !== 'function'){
-    window.trace=()=>{
+    window.trace=(...arguments)=>{
         if(DEBUG!==undefined && DEBUG)console.trace(arguments);
     }
 }
