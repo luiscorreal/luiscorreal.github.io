@@ -119,13 +119,20 @@ nav.main{
 
     }
 
+
+
+
 aside.sidebar{
     /* width: 30em; */
-    padding: 3em 1em 0 1em;
+    padding: 2em 1em 0 1em;
     background-color: var(--lightest-color);
     text-align:
     right;
-    min-width: 13em;
+    min-width: 15em;
+    max-width: 15em;
+    /* margin-right: 15em; */
+    /* color: var(--primary-color); */
+    /* position: fixed; */
 }main.page:before{
     content:'|';
     color:transparent;
@@ -138,6 +145,25 @@ aside.sidebar{
     margin: 1em 0 0 -1em;
     opacity:0.3;
 }
+aside.sidebar a{
+   display: block;
+   text-decoration: none;
+   color: var(--mid-color);
+   /* padding: 0 0.4em 0 0; */
+    font-size:0.8em;
+   margin: 0.7em 0;
+}
+aside.sidebar a:hover{
+    color: var(--dark-color);
+}
+aside.sidebar a::first-line{
+    font-weight:bold;
+    color:var(--darkest-color);
+}
+aside.sidebar a:hover::first-line{
+    color:var(--secondary-color);
+}
+
 
 
 header.main a.logo-home{
