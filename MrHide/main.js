@@ -113,12 +113,12 @@ if(typeof window['MrHide'] !== 'function'){
                 this.layout="pages";
         		this.data={};
 
-        		Object.assign(this, obj)
+        		this.setFields(obj)
         	}
 
-            /*setFields(obj){
+            setFields(obj){
                 Object.assign(this, obj)
-            }*/
+            }
         }
 
         static user;
