@@ -278,6 +278,16 @@ if(typeof window['MrHide'] !== 'function'){
                 return '';
             },
 
+            image(url,size='',cl='',id=''){//sizes:small,medium
+                if(size!==''){
+                    var ri=url.split('.');
+                    var ext='.'+ri.pop();
+                    ri=this.path.assets+ri.join('.')+'-'+size+ext;
+                    return `<img id=${id} class='${cl}' src='${this.path.assets}${url}' onerror="this.onerror=null; this.src='${url}'">`;
+                }
+                return `<img id=${id} class='${cl}' src='${this.path.assets}${url}' >`;
+            }
+
             date(field){
                 var d=new Date();
                 switch(field){
@@ -324,7 +334,7 @@ if(typeof window['MrHide'] !== 'function'){
                         if(i>start+count)return;
                         ret+=`<section class='preview-item ${list}-preview-item'>
                             <a href='${this.path.root+'/'+list+'/'+item.url}'>
-                                <img src='${this.path.assets+item.image}'>
+                                ${this.builders.build('image',[this.path.assets+item.image,"medium"])}
                                 ${this.builders.build('categories',[item.categories])}
                                 <h3>${item.title}</h3>
                                 ${this.builders.build('author',[item])}
@@ -342,7 +352,7 @@ if(typeof window['MrHide'] !== 'function'){
                 this.layouts.filter(layout,(item,i)=>{return i>=start && i<start+count},(item,i)=>{
                     return `<section class='preview-small-item ${layout}-preview-small-item'>
                         <a href='${this.path.root+'/'+layout+'/'+item.url}'>
-                            <img src='${this.path.assets+item.image}'>
+                            ${this.builders.build('image',[this.path.assets+item.image,"small"])}
                             <div><b>${item.title}</b><p>${item.description.substr(0,84)+'...'}</p></div>
                         </a>
                     </section>`
