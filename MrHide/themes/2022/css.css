@@ -427,7 +427,6 @@ div.preview-list section h3,div.preview-list section p{
 div.preview-list section p{
     text-align:justify;
     font-size:0.9em;
-    border-top: 1px solid var(--light-color);
     margin-top:0.5em;
     padding-top:0.5em;
 }
