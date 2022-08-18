@@ -327,14 +327,14 @@ if(typeof window['MrHide'] !== 'function'){
 
                 headings.forEach((item, i) => {
                     if(item.href!=='' && item.href!=='#'){
-                        html+=`<a href='#${item.href}'>${item.href}</a>`;
+                        html+=`<li><a href='#${item.href}' target='_blank'>${item.href}</a></li>`;
                     }
                 });
 
                 return `<nav class='page-navigation'>
                     <details open="" class="navigation">
                         <summary class="hor-linear-gradient-after">References</summary>
-                        ${html}
+                        <ul>${html}</ul>
                     </details>
                 </nav>`;
             },
