@@ -327,7 +327,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                 headings.forEach((item, i) => {
                     if(item.href!=='' && item.href!=='#'){
-                        item.innerHTML+=`<sup>[${i}]</sup>`;
+                        item.innerHTML+=`<sup>(${i})</sup>`;
                         html+=`<li><a href='#${item.href}' target='_blank'>${item.href}</a></li>`;
                     }
                 });
@@ -338,7 +338,7 @@ if(typeof window['MrHide'] !== 'function'){
                         <ol>${html}</ol>
                     </details>
                 </nav>`;
-                
+
             },
 
             error(message,argument){
