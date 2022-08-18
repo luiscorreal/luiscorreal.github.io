@@ -322,7 +322,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                 var headings=article.querySelectorAll('a');
 
-                if(headings.length<2)return '';
+                if(headings.length==0)return '';
 
                 var html='';
 
