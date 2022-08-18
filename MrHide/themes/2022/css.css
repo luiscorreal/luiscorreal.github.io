@@ -28,6 +28,9 @@
     --hor-linear-gradient:linear-gradient(90deg, transparent 0%, var(--mid-color) 10%, var(--mid-color) 38%, transparent 90%);
 }
 
+a{
+    word-break: break-all;
+}
 img{max-width:100%;}
 
 div.MrHide-error{
