@@ -290,6 +290,26 @@ if(typeof window['MrHide'] !== 'function'){
                 }
             },
 
+            static pageNavigation(...headings){//it is a onReady builder
+                var article=document.querySelector('article');
+                if(nav===null)return '';
+
+                var headings=article.querySelectorAll(headings.toString());
+
+                if(headings.length<2)return '';
+
+                var html='';
+
+                headings.forEach((item, i) => {
+                    var title=(item.tagName==='H1'?'':' ')+item.innerText;
+                    var id=item.id===''?'heading-'+i:item.id;item.id=id;
+
+                    html+=`<a class='${item.tagName}' href='#${id}'>${title}</a>`;
+                });
+
+                return `<nav class='page-navigation'>${html}</nav>`;
+            },
+
             error(message,argument){
                 return `<div class='MrHide-error'><b>Error:</b> ${message} (${argument})</div>`;
             },
