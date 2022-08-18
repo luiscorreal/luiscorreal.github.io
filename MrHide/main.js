@@ -361,8 +361,8 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             sectionHeading(text,url=''){
-                trace(url)
-                var b=(url==='')?'':`<a href='${url}>See all</a>'`
+                trace(url[0])
+                var b=(url==='')?'':`<a href='${url}''>See all</a>`
                 return `<h2 class='section-heading'><span>${text}</span>${b}<hr class='hor-linear-gradient-before'></h2>`
             }
         }
