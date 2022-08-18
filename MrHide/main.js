@@ -304,13 +304,13 @@ if(typeof window['MrHide'] !== 'function'){
                     var title=(item.tagName==='H1'?'':' ')+item.innerText;
                     var id=item.id===''?'heading-'+i:item.id;item.id=id;
 
-                    html+=`<a class='a-${item.tagName}' href='#${id}'>${title}</a>`;
+                    html+=`<li><a class='a-${item.tagName}' href='#${id}'>${title}</a></li>`;
                 });
 
                 return `<nav class='page-navigation'>
                     <details open="" class="navigation">
                         <summary class="hor-linear-gradient-after">Contents</summary>
-                        ${html}
+                        <ul>${html}</ul>
                     </details>
                 </nav>`;
             },
