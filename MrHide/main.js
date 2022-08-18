@@ -307,7 +307,12 @@ if(typeof window['MrHide'] !== 'function'){
                     html+=`<a class='${item.tagName}' href='#${id}'>${title}</a>`;
                 });
 
-                return `<nav class='page-navigation'>${html}</nav>`;
+                return `<nav class='page-navigation'>
+                    <details open="" class="navigation">
+                        <summary class="hor-linear-gradient-after">Contents</summary>
+                        ${html}
+                    </details>
+                </nav>`;
             },
 
             error(message,argument){

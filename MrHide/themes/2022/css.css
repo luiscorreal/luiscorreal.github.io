@@ -81,6 +81,38 @@ h2.section-heading>hr{
     /* border-bottom:1px dashed var(--primary-color); */
 }
 
+
+details.navigation{
+    padding: 1.5em 1em 0.5em 0.5em;
+}details.navigation a{
+    text-decoration:
+    none;
+    display:
+    block;
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    font-family: var(--sans-font);
+    padding: 0 0.7em 0.5em 1.3em;
+    line-height:1;
+}details.navigation a:before{
+    content:'-'
+}details.navigation summary{
+    margin:0;
+    padding:0;
+    margin-bottom:0.5em;
+    font-size:1.2em;
+    color: var(--primary-dark);
+    font-weight: normal;
+}details.navigation summary:after{
+    margin-top:0.3em;
+}
+
+nav.page-navigation+article{
+    padding-top:0;
+    margin-top:0;
+}
+
+
 article ol{
     counter-reset: ol;
     list-style: none;
@@ -140,8 +172,7 @@ div.main-container.with-sidebar{
 
 main.page,main.post{
     padding:1em;
-    background-color:
-    var(--lightest-color);
+    background-color: var(--lightest-color);
 }
 
 nav.main{
