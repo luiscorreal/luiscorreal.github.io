@@ -156,6 +156,11 @@ header.main{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.1em;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    /* margin-bottom: 1.5em; */
 }
 
 img.featured-image{
@@ -167,6 +172,7 @@ div.main-container{
     max-width: 32cm;
     margin:0 auto;
     padding: 0 1em;
+    padding-top: 1.5em !important;
 }
 
 div.main-container.with-sidebar{
