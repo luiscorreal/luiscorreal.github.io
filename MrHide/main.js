@@ -338,6 +338,7 @@ if(typeof window['MrHide'] !== 'function'){
                         <ol>${html}</ol>
                     </details>
                 </nav>`;
+                
             },
 
             error(message,argument){
