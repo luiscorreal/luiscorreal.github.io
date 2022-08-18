@@ -327,6 +327,7 @@ if(typeof window['MrHide'] !== 'function'){
 
                 headings.forEach((item, i) => {
                     if(item.href!=='' && item.href!=='#'){
+                        item.innerHTML+=`[<sup>${i}</sup>]`;
                         html+=`<li><a href='#${item.href}' target='_blank'>${item.href}</a></li>`;
                     }
                 });
@@ -334,7 +335,7 @@ if(typeof window['MrHide'] !== 'function'){
                 return `<nav class='page-navigation'>
                     <details open="" class="navigation">
                         <summary class="hor-linear-gradient-after">References</summary>
-                        <ul>${html}</ul>
+                        <ol>${html}</ol>
                     </details>
                 </nav>`;
             },
