@@ -292,7 +292,7 @@ if(typeof window['MrHide'] !== 'function'){
 
             pageNavigation(...headings){//it is a onReady builder
                 var article=document.querySelector('article');
-                if(nav===null)return '';
+                if(article===null)return '';
 
                 var headings=article.querySelectorAll(headings.toString());
 
