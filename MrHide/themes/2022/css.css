@@ -83,7 +83,12 @@ h2.section-heading>hr{
 
 
 details.navigation{
-    padding: 1.5em 1em 0.5em 0.5em;
+    padding: 1.5em 1em 0.5em 0;
+}details.navigation ul{
+    /* padding-bottom:0; */
+    /* padding-top:0; */
+    margin: 0;
+    list-style-type: square;
 }details.navigation a{
     text-decoration:
     none;
@@ -92,10 +97,8 @@ details.navigation{
     font-size: 0.9em;
     color: var(--secondary-color);
     font-family: var(--sans-font);
-    padding: 0 0.7em 0.5em 1.3em;
+    padding: 0 0.7em 0.5em 0;
     line-height:1;
-}details.navigation a:before{
-    content:'-'
 }details.navigation summary{
     margin:0;
     padding:0;
