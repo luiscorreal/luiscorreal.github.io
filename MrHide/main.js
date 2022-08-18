@@ -304,12 +304,36 @@ if(typeof window['MrHide'] !== 'function'){
                     var title=(item.tagName==='H1'?'':' ')+item.innerText;
                     var id=item.id===''?'heading-'+i:item.id;item.id=id;
 
-                    html+=`<a class='${item.tagName}' href='#${id}'>${title}</a>`;
+                    html+=`<a class='a-${item.tagName}' href='#${id}'>${title}</a>`;
                 });
 
                 return `<nav class='page-navigation'>
                     <details open="" class="navigation">
                         <summary class="hor-linear-gradient-after">Contents</summary>
+                        ${html}
+                    </details>
+                </nav>`;
+            },
+
+            referencesList(){//it is a onReady builder
+                var article=document.querySelector('article');
+                if(article===null)return '';
+
+                var headings=article.querySelectorAll('a');
+
+                if(headings.length<2)return '';
+
+                var html='';
+
+                headings.forEach((item, i) => {
+                    if(item.href!=='' && item.href!=='#'){
+                        html+=`<a href='#${item.href}'>${item.href}</a>`;
+                    }
+                });
+
+                return `<nav class='page-navigation'>
+                    <details open="" class="navigation">
+                        <summary class="hor-linear-gradient-after">References</summary>
                         ${html}
                     </details>
                 </nav>`;
