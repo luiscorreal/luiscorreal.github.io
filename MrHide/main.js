@@ -277,7 +277,6 @@ if(typeof window['MrHide'] !== 'function'){
                 attrs.forEach((item,i) => {
                     ats+=` data-attr${i}="${item}" `
                 });
-                trace(ats)
 
                 return `<script type="mrHide/onReadyBuilders" id='${name}' ${ats}></script>`
             },
