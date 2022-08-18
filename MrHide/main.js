@@ -290,7 +290,7 @@ if(typeof window['MrHide'] !== 'function'){
                 }
             },
 
-            static pageNavigation(...headings){//it is a onReady builder
+            pageNavigation(...headings){//it is a onReady builder
                 var article=document.querySelector('article');
                 if(nav===null)return '';
 
