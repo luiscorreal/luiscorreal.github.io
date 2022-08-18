@@ -327,7 +327,7 @@ if(typeof window['MrHide'] !== 'function'){
                 var html='';
 
                 headings.forEach((item, i) => {
-                    if(item.href!=='' && item.href!=='#' && item.haref.startsWith(MrHide.path.root)===false){
+                    if(item.href!=='' && item.href!=='#' && item.href.startsWith(MrHide.path.root)===false){
                         item.innerHTML+=`<sup>(${i})</sup>`;
                         html+=`<li><a href='#${item.href}' target='_blank'>${item.href}</a></li>`;
                     }
