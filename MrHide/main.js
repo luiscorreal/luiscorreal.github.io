@@ -384,7 +384,7 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             contents(){
-                return `<article>${this.contents}</article>`;
+                return this.contents;
             },
 
             user(field){
