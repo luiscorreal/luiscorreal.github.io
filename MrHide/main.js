@@ -256,11 +256,11 @@ if(typeof window['MrHide'] !== 'function'){
                     //layout
                     this.processContents(this.path.theme+'layouts/'+this.page.layout+'.html').then(contents=>{
                         document.body.innerHTML=contents;
-
-
+                        this.builders.onReadyBuilders();
                     })
                 }else{
                     document.body.innerHTML=html
+                    this.builders.onReadyBuilders();
                 }
 
             })
@@ -313,6 +313,7 @@ if(typeof window['MrHide'] !== 'function'){
                 var d=new Date();
                 switch(field){
                     case 'year':return d.getFullYear();break;
+                    default:d.toString()
                 }
             },
 
