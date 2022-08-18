@@ -164,10 +164,11 @@ if(typeof window['MrHide'] !== 'function'){
         static build(){
             this.path=new Proxy({},{
                 get(target,name) {
-                    var root='https://'+window.location.hostname,mrh=root+'/MrHide/';
+                    var root='https://'+window.location.hostname,
+                        mrh=root+'/MrHide/';
 
                     switch(name){
-                        case 'root':return root;
+                        case 'root':return root;break;
                         case 'settings':return mrh+'settings.json';break;
                         case 'pages':return mrh+'pages/';break;
                         case 'layout':return mrh+MrHide.page.layout+'/';break;
@@ -326,7 +327,7 @@ if(typeof window['MrHide'] !== 'function'){
                 var html='';
 
                 headings.forEach((item, i) => {
-                    if(item.href!=='' && item.href!=='#'){
+                    if(item.href!=='' && item.href!=='#' && item.haref.startsWith(MrHide.path.root)===false){
                         item.innerHTML+=`<sup>(${i})</sup>`;
                         html+=`<li><a href='#${item.href}' target='_blank'>${item.href}</a></li>`;
                     }
