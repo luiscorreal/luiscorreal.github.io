@@ -256,6 +256,8 @@ if(typeof window['MrHide'] !== 'function'){
                     //layout
                     this.processContents(this.path.theme+'layouts/'+this.page.layout+'.html').then(contents=>{
                         document.body.innerHTML=contents;
+
+
                     })
                 }else{
                     document.body.innerHTML=html
@@ -267,6 +269,25 @@ if(typeof window['MrHide'] !== 'function'){
         static builders={//into these functions 'this' refers to MrHide object
             build(name,attrs=[]){
                 return this[name].apply(MrHide,attrs);
+            },
+
+            onReady(name,...attrs){//special builder executed when the contents are filled the body
+                var ats=''
+                attrs.forEach((item,i) => {
+                    ats+=` data-attr${i}="${item}" `
+                });
+                trace(ats)
+
+                return `<script type="mrHide/onReadyBuilders" id='${name}' ${ats}></script>`
+            },
+
+            onReadyBuilders(){
+                var builders=document.querySelectorAll('script[type="mrHide/onReadyBuilders"]'),builder,attrs=[];
+                for (var i=0; i<builders.length; i++) {
+                    builder = builders[i];
+                    for( var at in builder.dataset)attrs.push(builder.dataset[at]);
+                    builder.outerHTML = this.build(builder.id,attrs);
+                }
             },
 
             error(message,argument){
@@ -361,7 +382,6 @@ if(typeof window['MrHide'] !== 'function'){
             },
 
             sectionHeading(text,url=''){
-                trace(url)
                 var b=(url==='')?'':`<a href='${url}''>See all</a>`
                 return `<h2 class='section-heading'><span>${text}</span>${b}<hr class='hor-linear-gradient-before'></h2>`
             }
