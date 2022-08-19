@@ -43,7 +43,7 @@ div.MrHide-error{
 html,body{
     padding:0;
     margin:0;
-    background-color:var(--light-color);
+    /* background-color:var(--light-color); */
 }
 *{
     font-family:
@@ -174,12 +174,11 @@ div.main-container{
     max-width: 32cm;
     margin:0 auto;
     padding: 0 1em;
-    
 }
 
 div.main-container.with-sidebar{
     display: flex;
-    box-shadow: var(--top-box-shadow);
+    /* box-shadow: var(--top-box-shadow); */
     padding:0;
 }
 
