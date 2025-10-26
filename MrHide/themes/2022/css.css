@@ -412,8 +412,10 @@ div.user-profile>*{
     /* max-width: 30em; */
 }
     div.user-profile img{
-        height: 7em;
-        width: 7em;
+        height: 4em;
+        /* width: 7em; */
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
         border-radius: 4em;
         margin-right:1em;
     }
@@ -422,7 +424,8 @@ div.user-profile p{
     var(--mid-color); */
     opacity: 0.7;
     max-width: 30em;
-    margin: 1em auto 0 auto;
+    margin: 0;
+    font-size: 0.8rem;
 }
 
 div.user-profile h2{
